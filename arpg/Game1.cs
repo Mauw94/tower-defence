@@ -1,33 +1,55 @@
-﻿using Microsoft.Xna.Framework;
+﻿using arpg.GameStates;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace arpg
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public GraphicsDeviceManager graphics;
+        public SpriteBatch spriteBatch;
+
+        public static Random Random;
+
+        public static int ScreenWidth = 1280;
+        public static int ScreenHeight = 720;
+
+        private State _currentState;
+        private State _nextState;
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Random = new Random();
+
+            graphics.PreferredBackBufferWidth = ScreenWidth;
+            graphics.PreferredBackBufferHeight = ScreenHeight;
+            graphics.ApplyChanges();
+
+            IsMouseVisible = true;
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            _currentState = new MenuState(this, Content);
+            _currentState.LoadContent();
+            _nextState = null;
+        }
+
+        protected override void UnloadContent()
+        {
+            base.UnloadContent();
         }
 
         protected override void Update(GameTime gameTime)
@@ -35,7 +57,17 @@ namespace arpg
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            if (_nextState != null)
+            {
+                _currentState = _nextState;
+                _currentState.LoadContent();
+
+                _nextState = null;
+            }
+
+            _currentState.Update(gameTime);
+
+            _currentState.PostUpdate(gameTime);
 
             base.Update(gameTime);
         }
@@ -44,9 +76,14 @@ namespace arpg
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _currentState.Draw(gameTime, spriteBatch);
 
             base.Draw(gameTime);
+        }
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
         }
     }
 }
