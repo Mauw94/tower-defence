@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace arpg.GameStates
+namespace towerdef.GameStates
 {
     public abstract class State
     {

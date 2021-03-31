@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace arpg.Sprites
+namespace towerdef.Sprites
 {
     public class Sprite : Component
     {

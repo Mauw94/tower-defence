@@ -1,11 +1,12 @@
-﻿using arpg.Sprites;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using towerdef;
+using towerdef.Sprites;
 
-namespace arpg.Controls
+namespace towerdef.Controls
 {
     public class Button : Component
     {

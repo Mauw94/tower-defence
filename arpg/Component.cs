@@ -1,9 +1,9 @@
-﻿using arpg.Sprites;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using towerdef.Sprites;
 
-namespace arpg
+namespace towerdef
 {
     public abstract class Component
     {

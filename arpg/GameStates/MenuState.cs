@@ -1,12 +1,12 @@
-﻿using arpg.Controls;
-using arpg.Sprites;
+﻿using towerdef.Controls;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using towerdef.Sprites;
 
-namespace arpg.GameStates
+namespace towerdef.GameStates
 {
     public class MenuState : State
     {
@@ -40,7 +40,7 @@ namespace arpg.GameStates
                 new Button(buttonTexture, buttonFont)
                 {
                     Text = "Choose picker",
-                    Position = new Vector2(Game1.ScreenHeight / 2, 440),
+                    Position = new Vector2(Game1.ScreenWidth / 2, 440),
                     Click = new EventHandler(Button_LevelPicker_Clicked),
                     Layer = 0.1f
                 },
