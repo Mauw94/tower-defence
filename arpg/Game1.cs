@@ -28,7 +28,7 @@ namespace towerdef
         protected override void Initialize()
         {
             Random = new Random();
-
+            
             graphics.PreferredBackBufferWidth = ScreenWidth;
             graphics.PreferredBackBufferHeight = ScreenHeight;
             graphics.ApplyChanges();

@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace towerdef.Sprites
 {
-    public class Sprite : Component
+    public class Sprite : Component, ICloneable
     {
         protected Texture2D _texture;
         protected float _rotation;
