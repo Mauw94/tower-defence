@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using towerdef.Sprites;
@@ -11,9 +10,9 @@ namespace towerdef.Entities.Enemies
         {
         }
 
-        public override void Update(GameTime gameTime, List<Sprite> sprites)
+        public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime, sprites);
+            base.Update(gameTime);
         }
         
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using towerdef.Entities.Enemies;
 using towerdef.Managers;
 using towerdef.Sprites;
@@ -18,20 +16,23 @@ namespace towerdef.Entities.Towers
 
         public Missile(Texture2D texture) : base(texture)
         {
-            Damage = 1;
+            // todo: create other types of missiles for different towers.
+            // Missile will be super class.
+
+            Damage = 40;
             LinearVelocity = 8f;
-            ShootInteval = 1.2f;
+            ShootInteval = 1.7f;
 
             TargetRandomEnemy();
         }
 
-        public override void Update(GameTime gameTime, List<Sprite> sprites)
+        public override void Update(GameTime gameTime)
         {
             Vector2 direction = _enemyToTarget.Position - Position;
             direction.Normalize();
             Position += direction * LinearVelocity;
 
-            base.Update(gameTime, sprites);
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

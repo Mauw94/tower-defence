@@ -43,7 +43,7 @@ namespace towerdef.Sprites
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
         }
 
-        public override void Update(GameTime gameTime, List<Sprite> sprites)
+        public override void Update(GameTime gameTime)
         {
 
         }

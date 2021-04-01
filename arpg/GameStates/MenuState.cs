@@ -85,7 +85,7 @@ namespace towerdef.GameStates
         public override void Update(GameTime gameTime)
         {
             foreach (var component in _components)
-                component.Update(gameTime, null);
+                component.Update(gameTime);
         }
 
         public override void PostUpdate(GameTime gameTime)

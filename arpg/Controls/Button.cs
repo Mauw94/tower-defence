@@ -57,7 +57,7 @@ namespace towerdef.Controls
             PenColor = Color.Black;
         }
 
-        public override void Update(GameTime gameTime, List<Sprite> sprites)
+        public override void Update(GameTime gameTime)
         {
             _previousMouse = _currentMouse;
             _currentMouse = Mouse.GetState();

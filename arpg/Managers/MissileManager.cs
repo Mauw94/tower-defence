@@ -6,9 +6,9 @@ namespace towerdef.Managers
 {
     public class MissileManager
     {
-        public List<Missile> Missiles;
+        public static List<Missile> Missiles;
 
-        private Texture2D _missileTexture;
+        private static Texture2D _missileTexture;
 
         public MissileManager(Texture2D missileTexture)
         {
@@ -16,7 +16,7 @@ namespace towerdef.Managers
             Missiles = new List<Missile>();
         }
 
-        public Missile Generate()
+        public static Missile Generate()
         {
             var missile = new Missile(_missileTexture);
             Missiles.Add(missile);

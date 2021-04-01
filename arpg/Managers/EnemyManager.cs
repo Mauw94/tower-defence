@@ -15,13 +15,14 @@ namespace towerdef.Managers
             Enemies = new List<Enemy>();
         }
 
-        public BasicSkeleton GenerateSkeleton(Texture2D skeletonTexture)
+        public static BasicSkeleton GenerateSkeleton(Texture2D skeletonTexture)
         {
             var skeleton = new BasicSkeleton(skeletonTexture);
-
             Enemies.Add(skeleton);
 
             return skeleton;
         }
+
+        // todo: AI pathing for enemies.
     }
 }
