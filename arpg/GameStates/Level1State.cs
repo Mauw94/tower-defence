@@ -46,7 +46,13 @@ namespace towerdef.GameStates
             _undoButton = _content.Load<Texture2D>("undo");
             _healthTexture = _content.Load<Texture2D>("health");
 
+            // set textures to use throughout the game.
             TextureHelper.HealthTexture = _healthTexture;
+            TextureHelper.BasicSkeletonTexture = _basicSkeletonTexture;
+            TextureHelper.BasicTowerTexture = _basicTowerTexture;
+            TextureHelper.HudTexture = _hudTexture;
+            TextureHelper.UndoButtonTexture = _undoButton;
+            TextureHelper.MissileTexture = _missileTexture;
 
             // initialize managers.
             _enemyManager = new EnemyManager();
@@ -54,7 +60,7 @@ namespace towerdef.GameStates
             _buildManager = new BuildManager();
 
             // initialize helpers
-            _builderHud = new LevelBuilderHUD(_hudTexture, _basicTowerTexture, _undoButton);
+            _builderHud = new LevelBuilderHUD();
 
             Init();
         }

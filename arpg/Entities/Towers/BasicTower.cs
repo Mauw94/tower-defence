@@ -23,7 +23,6 @@ namespace arpg.Entities.Towers
 
             if (_timer > Missile.ShootInteval)
             {
-                Console.WriteLine(_timer);
                 _timer = 0f;
                 Shoot();
             }

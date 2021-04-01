@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
 
@@ -17,13 +18,6 @@ namespace towerdef.Levels
         private readonly int xPosHud = 20;
         private readonly int yPosHud = 30;
 
-        // texture box around build options.
-        private Texture2D _hudSelectBox;
-        // texture for basic towers.
-        private Texture2D _towerTexture;
-        // undo button texture.
-        private Texture2D _undoButton;
-
         // rectangle around the select box.
         private Rectangle _hudSelectBoxRec;
         // rectangle around the undo button.
@@ -36,16 +30,12 @@ namespace towerdef.Levels
         protected MouseState _currentMouseState;
         protected MouseState _previouseMouseState;
 
-        public LevelBuilderHUD(Texture2D hudTexture, Texture2D towerTexture, Texture2D undoButton)
+        public LevelBuilderHUD()
         {
-            _hudSelectBox = hudTexture;
-            _towerTexture = towerTexture;
-            _undoButton = undoButton;
+            _hudSelectBoxRec = new Rectangle(xPosHud, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
+            _undoButtonRec = new Rectangle(xPosHud, yPosHud + _hudSelectBoxRec.Height, TextureHelper.UndoButtonTexture.Width, TextureHelper.UndoButtonTexture.Height);
 
-            _hudSelectBoxRec = new Rectangle(xPosHud, yPosHud, _hudSelectBox.Width, _hudSelectBox.Height);
-            _undoButtonRec = new Rectangle(xPosHud, yPosHud + _hudSelectBoxRec.Height, _undoButton.Width, _undoButton.Height);
-
-            _exampleTower = new Sprite(_towerTexture);
+            _exampleTower = new Sprite(TextureHelper.BasicTowerTexture);
             _exampleTower.Position = new Vector2(
                 _hudSelectBoxRec.Width / 2 + _exampleTower.Rectangle.Width / 2, 
                 _hudSelectBoxRec.Height / 2 + _exampleTower.Rectangle.Height / 2);
@@ -84,7 +74,7 @@ namespace towerdef.Levels
                 if (_currentMouseState.LeftButton == ButtonState.Released
                     && _previouseMouseState.LeftButton == ButtonState.Pressed)
                 {
-                    BuildManager.CreateTower(_towerTexture, _mousePos);
+                    BuildManager.CreateTower(TextureHelper.BasicTowerTexture, _mousePos);
                     _draggedSprite = null;
                     _dragging = false;
                 }
@@ -94,9 +84,8 @@ namespace towerdef.Levels
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            // todo: draw undo button
-            spriteBatch.Draw(_undoButton, new Vector2(xPosHud, yPosHud + _hudSelectBoxRec.Height), Color.Black);
-            spriteBatch.Draw(_hudSelectBox, new Vector2(xPosHud, yPosHud), Color.Black);
+            spriteBatch.Draw(TextureHelper.UndoButtonTexture, new Vector2(xPosHud, yPosHud + _hudSelectBoxRec.Height), Color.Black);
+            spriteBatch.Draw(TextureHelper.HudTexture, new Vector2(xPosHud, yPosHud), Color.Black);
 
             _exampleTower.Draw(gameTime, spriteBatch);
 

@@ -18,7 +18,6 @@ namespace towerdef.Entities.Towers
         {
             // todo: create other types of missiles for different towers.
             // Missile will be super class.
-
             Damage = 40;
             LinearVelocity = 8f;
             ShootInteval = 1.7f;
@@ -44,7 +43,6 @@ namespace towerdef.Entities.Towers
         {
             // todo: target another enemy when the targeted one dies.
             var enemyIndex = Game1.Random.Next(0, EnemyManager.Enemies.Count);
-            Console.WriteLine(enemyIndex);
             _enemyToTarget = EnemyManager.Enemies.ToArray()[enemyIndex];
         }
     }
