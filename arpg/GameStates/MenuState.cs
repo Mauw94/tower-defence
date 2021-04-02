@@ -39,7 +39,7 @@ namespace towerdef.GameStates
                 },
                 new Button(buttonTexture, buttonFont)
                 {
-                    Text = "Choose picker",
+                    Text = "Choose level",
                     Position = new Vector2(Game1.ScreenWidth / 2, 440),
                     Click = new EventHandler(Button_LevelPicker_Clicked),
                     Layer = 0.1f

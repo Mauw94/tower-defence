@@ -11,8 +11,9 @@ namespace towerdef.Entities.Enemies
         public BasicSkeleton(Texture2D texture) : base(texture)
         {
             HealthPoints = 100;
+            Damage = 10;
             LinearVelocity = 0.5f;
-            Position = new Vector2(Game1.ScreenWidth - 150, Game1.ScreenHeight / 2);
+            Position = new Vector2(Game1.ScreenWidth, Game1.ScreenHeight / 2);
         }
 
         public override void Update(GameTime gameTime)

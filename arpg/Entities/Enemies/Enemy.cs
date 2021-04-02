@@ -7,6 +7,7 @@ namespace towerdef.Entities.Enemies
     public class Enemy : Sprite
     {
         public int HealthPoints { get; set; }
+        public int Damage { get; set; }
 
         public Enemy(Texture2D texture) : base(texture)
         {

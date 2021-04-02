@@ -1,6 +1,7 @@
-using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using towerdef.Entities.Enemies;
+using towerdef.Helpers;
 
 namespace towerdef.Managers
 {
@@ -8,17 +9,40 @@ namespace towerdef.Managers
     {
         public static List<Enemy> Enemies;
 
+        private float _timer = 0f;
+
+        private int _spawnedEnemies;
+
         public EnemyManager()
         {
             Enemies = new List<Enemy>();
         }
 
-        public static BasicSkeleton GenerateSkeleton(Texture2D skeletonTexture)
+        public static BasicSkeleton GenerateSkeleton()
         {
-            var skeleton = new BasicSkeleton(skeletonTexture);
+            var skeleton = new BasicSkeleton(TextureHelper.BasicSkeletonTexture);
             Enemies.Add(skeleton);
 
             return skeleton;
+        }
+
+        public void PeriodicallySpawnEnemy(GameTime gameTime)
+        {
+            _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (_timer > Level1Helper.SkeletonSpawnTimer 
+                && _spawnedEnemies <= Level1Helper.WaveOneMaxSkeletons)
+            {
+                _timer = 0f;
+                _spawnedEnemies++;
+                GenerateSkeleton();
+            }
+        }
+
+        public void Reset()
+        {
+            Enemies = new List<Enemy>();
+            _spawnedEnemies = 0;
         }
 
         public static void Remove(Enemy enemy)

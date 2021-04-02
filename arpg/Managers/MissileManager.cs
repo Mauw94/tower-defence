@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using towerdef.Entities.Towers;
+using towerdef.Helpers;
+using towerdef.Sprites;
 
 namespace towerdef.Managers
 {
@@ -8,17 +9,14 @@ namespace towerdef.Managers
     {
         public static List<Missile> Missiles;
 
-        private static Texture2D _missileTexture;
-
-        public MissileManager(Texture2D missileTexture)
+        public MissileManager()
         {
-            _missileTexture = missileTexture;
             Missiles = new List<Missile>();
         }
 
-        public static Missile Generate()
+        public static Missile Generate(Sprite parent)
         {
-            var missile = new Missile(_missileTexture);
+            var missile = new Missile(TextureHelper.MissileTexture, parent);
             Missiles.Add(missile);
 
             return missile;

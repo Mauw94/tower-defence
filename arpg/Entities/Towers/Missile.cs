@@ -1,6 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using towerdef.Entities.Enemies;
+using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
 
@@ -13,13 +16,14 @@ namespace towerdef.Entities.Towers
 
         private Enemy _enemyToTarget;
 
-        public Missile(Texture2D texture) : base(texture)
+        public Missile(Texture2D texture, Sprite parent) : base(texture)
         {
             // todo: create other types of missiles for different towers.
             // Missile will be super class.
             Damage = 40;
             LinearVelocity = 5f;
             ShootInteval = 2.5f;
+            Parent = parent;
 
             TargetRandomEnemy();
         }
@@ -43,9 +47,15 @@ namespace towerdef.Entities.Towers
 
         void TargetRandomEnemy()
         {
-            // todo: target another enemy when the targeted one dies.
-            var enemyIndex = Game1.Random.Next(0, EnemyManager.Enemies.Count);
-            _enemyToTarget = EnemyManager.Enemies.ToArray()[enemyIndex];
+            List<Enemy> enemiesInRange = new List<Enemy>();
+            foreach (var enemy in EnemyManager.Enemies)
+            {
+                if (Level1Helper.EnemyInShootingDistance(enemy, this.Parent))
+                    enemiesInRange.Add(enemy);
+            }
+
+            var enemyIndex = Game1.Random.Next(0, enemiesInRange.Count);
+            _enemyToTarget = enemiesInRange.Count > 0 ? enemiesInRange.ToArray()[enemyIndex] : null;
         }
     }
 }

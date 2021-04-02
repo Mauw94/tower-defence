@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using towerdef;
 using towerdef.Entities.Towers;
+using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
 
@@ -11,7 +12,7 @@ namespace arpg.Entities.Towers
     public class BasicTower : Sprite
     {
         private float _timer = 0f;
-
+        
         public BasicTower(Texture2D texture) : base(texture)
         {
             Position = new Vector2(Game1.ScreenWidth / 2, Game1.ScreenHeight / 2);
@@ -19,13 +20,22 @@ namespace arpg.Entities.Towers
 
         public override void Update(GameTime gameTime)
         {
-            _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (_timer > Missile.ShootInteval)
+            foreach (var enemy in EnemyManager.Enemies)
             {
-                _timer = 0f;
-                if (EnemyManager.Enemies.Count > 0)
-                    Shoot();
+                if (Level1Helper.EnemyInShootingDistance(enemy, this))
+                {
+                    _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                    if (_timer > Missile.ShootInteval)
+                    {
+                        _timer = 0f;
+                        if (EnemyManager.Enemies.Count > 0)
+                            Shoot();
+                        else
+                            MissileManager.Missiles.Clear();
+                    }
+                }
+                
             }
 
             base.Update(gameTime);
@@ -38,10 +48,9 @@ namespace arpg.Entities.Towers
 
         private void Shoot()
         {
-            var missile = MissileManager.Generate();
+            var missile = MissileManager.Generate(this);
             missile.Position = new Vector2(this.Position.X + (_texture.Width / 2), this.Position.Y);
             missile.Direction = this.Direction;
-            missile.Parent = this;
         }
     }
 }

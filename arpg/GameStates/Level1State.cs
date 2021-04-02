@@ -57,7 +57,7 @@ namespace towerdef.GameStates
 
             // initialize managers.
             _enemyManager = new EnemyManager();
-            _missileManager = new MissileManager(_missileTexture);
+            _missileManager = new MissileManager();
             _buildManager = new BuildManager();
 
             // initialize helpers
@@ -84,6 +84,7 @@ namespace towerdef.GameStates
                     missile.Update(gameTime);
 
                 _collisionDetection.DetectCollision();
+                _enemyManager.PeriodicallySpawnEnemy(gameTime);
             } 
             else
             {
@@ -127,11 +128,11 @@ namespace towerdef.GameStates
 
         void Init()
         {
-            EnemyManager.GenerateSkeleton(_basicSkeletonTexture);
-            var skel2 = EnemyManager.GenerateSkeleton(_basicSkeletonTexture);
-            skel2.Position = new Vector2(Game1.ScreenWidth - 400, Game1.ScreenHeight / 2);
+            // EnemyManager.GenerateSkeleton();
+            // el2 = EnemyManager.GenerateSkeleton();
+            //skel2.Position = new Vector2(Game1.ScreenWidth - 400, Game1.ScreenHeight / 2);
 
-            _levelStarted = false;
+            // _levelStarted = false;
         }
     }
 }
