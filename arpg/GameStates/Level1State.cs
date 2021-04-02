@@ -28,6 +28,7 @@ namespace towerdef.GameStates
         private BuildManager _buildManager;
 
         private LevelBuilderHUD _builderHud;
+        private CollisionDetection _collisionDetection;
 
         private bool _levelStarted = false;
 
@@ -61,6 +62,7 @@ namespace towerdef.GameStates
 
             // initialize helpers
             _builderHud = new LevelBuilderHUD();
+            _collisionDetection = new CollisionDetection();
 
             Init();
         }
@@ -80,6 +82,8 @@ namespace towerdef.GameStates
 
                 foreach (var missile in MissileManager.Missiles.ToArray())
                     missile.Update(gameTime);
+
+                _collisionDetection.DetectCollision();
             } 
             else
             {

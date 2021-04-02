@@ -6,8 +6,6 @@ namespace towerdef.Entities.Enemies
 {
     public class BasicSkeleton : Enemy
     {
-        public int HealthPoints { get; set; }
-
         private Rectangle _healthRec;
 
         public BasicSkeleton(Texture2D texture) : base(texture)

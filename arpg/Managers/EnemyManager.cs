@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using towerdef.Entities.Enemies;
 
 namespace towerdef.Managers
@@ -21,6 +19,19 @@ namespace towerdef.Managers
             Enemies.Add(skeleton);
 
             return skeleton;
+        }
+
+        public static void Remove(Enemy enemy)
+        {
+            if (enemy != null)
+                Enemies.Remove(enemy);
+        }
+
+        public static void Hit(Enemy enemy, int damage)
+        {
+            enemy.HealthPoints -= damage;
+            if (!enemy.IsAlive())
+                Remove(enemy);
         }
 
         // todo: AI pathing for enemies.

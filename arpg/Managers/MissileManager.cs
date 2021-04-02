@@ -24,7 +24,7 @@ namespace towerdef.Managers
             return missile;
         }
 
-        public void Remove(Missile missile)
+        public static void Remove(Missile missile)
         {
             if (missile != null)
                 Missiles.Remove(missile);

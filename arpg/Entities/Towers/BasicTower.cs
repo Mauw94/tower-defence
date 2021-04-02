@@ -24,7 +24,8 @@ namespace arpg.Entities.Towers
             if (_timer > Missile.ShootInteval)
             {
                 _timer = 0f;
-                Shoot();
+                if (EnemyManager.Enemies.Count > 0)
+                    Shoot();
             }
 
             base.Update(gameTime);

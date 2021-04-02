@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using towerdef.Entities.Towers;
+using towerdef.Managers;
 
 namespace towerdef.Levels
 {
@@ -11,9 +10,19 @@ namespace towerdef.Levels
 
         }
 
-        void DetectCollision()
+        public void DetectCollision()
         {
-            // todo: check collisions between missiles and enemies.
+            foreach (var missile in MissileManager.Missiles.ToArray())
+            {
+                foreach (var enemy in EnemyManager.Enemies.ToArray())
+                {
+                    if (missile.Rectangle.Intersects(enemy.Rectangle))
+                    {
+                        MissileManager.Remove(missile);
+                        EnemyManager.Hit(enemy, Missile.Damage);
+                    }
+                }
+            }
         }
     }
 }
