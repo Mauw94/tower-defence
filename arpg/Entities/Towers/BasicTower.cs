@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using towerdef;
 using towerdef.Entities.Towers;
 using towerdef.Helpers;
@@ -11,6 +10,8 @@ namespace arpg.Entities.Towers
 {
     public class BasicTower : Sprite
     {
+        public static int Cost = 200;
+
         private float _timer = 0f;
         
         public BasicTower(Texture2D texture) : base(texture)
@@ -22,7 +23,7 @@ namespace arpg.Entities.Towers
         {
             foreach (var enemy in EnemyManager.Enemies)
             {
-                if (Level1Helper.EnemyInShootingDistance(enemy, this))
+                if (LevelStatsHelper.EnemyInShootingDistance(enemy, this))
                 {
                     _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -41,9 +42,9 @@ namespace arpg.Entities.Towers
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
         {
-            base.Draw(gameTime, spriteBatch);
+            base.Draw(gameTime, spriteBatch, scale);
         }
 
         private void Shoot()

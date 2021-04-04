@@ -8,6 +8,7 @@ namespace towerdef.Entities.Enemies
     {
         public int HealthPoints { get; set; }
         public int Damage { get; set; }
+        public int DropsGold { get; set; }
 
         public Enemy(Texture2D texture) : base(texture)
         {
@@ -24,9 +25,9 @@ namespace towerdef.Entities.Enemies
             base.Update(gameTime);
         }
         
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
         {
-            base.Draw(gameTime, spriteBatch);
+            base.Draw(gameTime, spriteBatch, scale);
         }
 
         public bool IsAlive()

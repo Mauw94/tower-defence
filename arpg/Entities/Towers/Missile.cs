@@ -40,9 +40,9 @@ namespace towerdef.Entities.Towers
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale )
         {
-            base.Draw(gameTime, spriteBatch);
+            base.Draw(gameTime, spriteBatch, scale);
         }
 
         void TargetRandomEnemy()
@@ -50,7 +50,7 @@ namespace towerdef.Entities.Towers
             List<Enemy> enemiesInRange = new List<Enemy>();
             foreach (var enemy in EnemyManager.Enemies)
             {
-                if (Level1Helper.EnemyInShootingDistance(enemy, this.Parent))
+                if (LevelStatsHelper.EnemyInShootingDistance(enemy, this.Parent))
                     enemiesInRange.Add(enemy);
             }
 

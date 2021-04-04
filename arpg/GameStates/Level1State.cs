@@ -1,9 +1,10 @@
-﻿using arpg.Entities.Towers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
+using towerdef.Entities;
 using towerdef.Helpers;
 using towerdef.Levels;
 using towerdef.Managers;
@@ -16,10 +17,12 @@ namespace towerdef.GameStates
         private Texture2D _gameMap;
         private Texture2D _basicTowerTexture;
         private Texture2D _missileTexture;
-        private Texture2D _basicSkeletonTexture;
+        private Texture2D _basicGolemTexture;
         private Texture2D _hudTexture;
         private Texture2D _undoButton;
         private Texture2D _healthTexture;
+
+        private SpriteFont _font;
 
         private List<Sprite> _sprites;
 
@@ -42,14 +45,17 @@ namespace towerdef.GameStates
             _gameMap = _content.Load<Texture2D>("level1");
             _basicTowerTexture = _content.Load<Texture2D>("tower1");
             _missileTexture = _content.Load<Texture2D>("missile");
-            _basicSkeletonTexture = _content.Load<Texture2D>("skeleton1");
+            _basicGolemTexture = _content.Load<Texture2D>("Golem_01_Idle_000");
             _hudTexture = _content.Load<Texture2D>("builderhud");
             _undoButton = _content.Load<Texture2D>("undo");
             _healthTexture = _content.Load<Texture2D>("health");
 
+            // load fonts.
+            _font = _content.Load<SpriteFont>("game");
+
             // set textures to use throughout the game.
             TextureHelper.HealthTexture = _healthTexture;
-            TextureHelper.BasicSkeletonTexture = _basicSkeletonTexture;
+            TextureHelper.BasicSkeletonTexture = _basicGolemTexture;
             TextureHelper.BasicTowerTexture = _basicTowerTexture;
             TextureHelper.HudTexture = _hudTexture;
             TextureHelper.UndoButtonTexture = _undoButton;
@@ -71,6 +77,13 @@ namespace towerdef.GameStates
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 _levelStarted = true;
+
+            if (LevelStatsHelper.WaveEnd)
+            {
+                Console.WriteLine("### resetting level, waiting for next wave");
+                _levelStarted = false;
+                Reset();
+            }
 
             if (_levelStarted)
             {
@@ -104,23 +117,26 @@ namespace towerdef.GameStates
             // draw game map.
             spriteBatch.Draw(_gameMap, new Vector2(0, 0), Color.White);
 
+            // draw gold.
+            spriteBatch.DrawString(_font, Level.Gold.ToString(), new Vector2(10, 10), Color.Black);
+
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())
-                build.Draw(gameTime, spriteBatch);
+                build.Draw(gameTime, spriteBatch, 1);
 
             // draw enemies and missiles being fired.
             if (_levelStarted)
             {
                 foreach (var enemy in EnemyManager.Enemies.ToArray())
-                    enemy.Draw(gameTime, spriteBatch);
+                    enemy.Draw(gameTime, spriteBatch, 0.15f);
                 
                 foreach (var missiles in MissileManager.Missiles.ToArray())
-                    missiles.Draw(gameTime, spriteBatch);
+                    missiles.Draw(gameTime, spriteBatch, 1);
             } 
             else
             {
                 // draw hud.
-                _builderHud.Draw(gameTime, spriteBatch);
+                _builderHud.Draw(gameTime, spriteBatch, 1);
             }
 
             spriteBatch.End();
@@ -133,6 +149,12 @@ namespace towerdef.GameStates
             //skel2.Position = new Vector2(Game1.ScreenWidth - 400, Game1.ScreenHeight / 2);
 
             // _levelStarted = false;
+        }
+
+        void Reset()
+        {
+            _enemyManager.Reset();
+            _missileManager.Reset();
         }
     }
 }

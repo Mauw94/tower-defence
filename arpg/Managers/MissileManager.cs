@@ -5,7 +5,7 @@ using towerdef.Sprites;
 
 namespace towerdef.Managers
 {
-    public class MissileManager
+    public class MissileManager : IGameManager
     {
         public static List<Missile> Missiles;
 
@@ -26,6 +26,11 @@ namespace towerdef.Managers
         {
             if (missile != null)
                 Missiles.Remove(missile);
+        }
+
+        public void Reset()
+        {
+            Missiles = new List<Missile>();
         }
     }
 }

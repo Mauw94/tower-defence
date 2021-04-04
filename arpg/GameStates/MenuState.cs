@@ -98,7 +98,7 @@ namespace towerdef.GameStates
             spriteBatch.Begin();
 
             foreach (var component in _components)
-                component.Draw(gameTime, spriteBatch);
+                component.Draw(gameTime, spriteBatch, 1);
 
             spriteBatch.End();
         }

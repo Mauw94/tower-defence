@@ -3,19 +3,19 @@ using towerdef.Sprites;
 
 namespace towerdef.Helpers
 {
-    public class Level1Helper
+    public class LevelStatsHelper
     {
         /// <summary>
         /// Wave one.
         /// </summary>
         public static float SkeletonSpawnTimer = 3f;
-        public static int WaveOneMaxSkeletons = 10;
+        public static int WaveOneMaxSkeletons = 3;
         
         public static int CastleHealth = 100;
-        |public static int AmountOfWaves = 5;
+        public static int AmountOfWaves = 5;
 
         public static bool WaveEnd { get; set; }
-        public static int WaveKillCount { get; set; }
+        public static int WaveKillCounter { get; set; }
 
         public static bool EnemyInShootingDistance(Sprite enemy, Sprite tower)
         {
@@ -28,8 +28,8 @@ namespace towerdef.Helpers
 
         public static void IncreaseWaveKillCount()
         {
-            WaveKillCount++;
-            if (WaveKillCount >= WaveOneMaxSkeletons)
+            WaveKillCounter++;
+            if (WaveKillCounter >= (WaveOneMaxSkeletons - 1))
                 WaveEnd = true;
         }
     }

@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using arpg.Entities.Towers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using towerdef.Entities;
 using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
@@ -47,15 +49,15 @@ namespace towerdef.Levels
             _currentMouseState = Mouse.GetState();
             _mousePos = Mouse.GetState().Position.ToVector2();
 
+            // clicked on undo button.
             if (_currentMouseState.LeftButton == ButtonState.Pressed 
                 && _previouseMouseState.LeftButton == ButtonState.Released
                 && _undoButtonRec.Contains(_currentMouseState.Position))
             {
-                // todo: remove last added tower.
-                Console.WriteLine("removing last added tower");
                 BuildManager.RemoveLastBuiltTower();
             }
 
+            // clicked on basic tower.
             if (!_dragging)
             {
                 if (_currentMouseState.LeftButton == ButtonState.Pressed
@@ -74,24 +76,28 @@ namespace towerdef.Levels
                 if (_currentMouseState.LeftButton == ButtonState.Released
                     && _previouseMouseState.LeftButton == ButtonState.Pressed)
                 {
-                    BuildManager.CreateTower(TextureHelper.BasicTowerTexture, _mousePos);
+                    if (Level.Buy(BasicTower.Cost))
+                        BuildManager.CreateTower(TextureHelper.BasicTowerTexture, _mousePos);
+                    else
+                        // todo: sent event that tower cannot be build.
+                        Console.WriteLine("not enough cold to buy tower.");
+
                     _draggedSprite = null;
                     _dragging = false;
                 }
             }
-            
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
         {
             spriteBatch.Draw(TextureHelper.UndoButtonTexture, new Vector2(xPosHud, yPosHud + _hudSelectBoxRec.Height), Color.Black);
             spriteBatch.Draw(TextureHelper.HudTexture, new Vector2(xPosHud, yPosHud), Color.Black);
 
-            _exampleTower.Draw(gameTime, spriteBatch);
+            _exampleTower.Draw(gameTime, spriteBatch, scale);
 
             if (_dragging)
             {
-                _draggedSprite.Draw(gameTime, spriteBatch);
+                _draggedSprite.Draw(gameTime, spriteBatch, scale);
             }
         }
 

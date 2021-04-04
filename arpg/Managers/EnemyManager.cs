@@ -1,11 +1,12 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using towerdef.Entities;
 using towerdef.Entities.Enemies;
 using towerdef.Helpers;
 
 namespace towerdef.Managers
 {
-    public class EnemyManager
+    public class EnemyManager : IGameManager
     {
         public static List<Enemy> Enemies;
 
@@ -18,9 +19,9 @@ namespace towerdef.Managers
             Enemies = new List<Enemy>();
         }
 
-        public static BasicSkeleton GenerateSkeleton()
+        public static BasicGolem GenerateSkeleton()
         {
-            var skeleton = new BasicSkeleton(TextureHelper.BasicSkeletonTexture);
+            var skeleton = new BasicGolem(TextureHelper.BasicSkeletonTexture);
             Enemies.Add(skeleton);
 
             return skeleton;
@@ -30,8 +31,8 @@ namespace towerdef.Managers
         {
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (_timer > Level1Helper.SkeletonSpawnTimer 
-                && _spawnedEnemies <= Level1Helper.WaveOneMaxSkeletons)
+            if (_timer > LevelStatsHelper.SkeletonSpawnTimer 
+                && _spawnedEnemies <= LevelStatsHelper.WaveOneMaxSkeletons)
             {
                 _timer = 0f;
                 _spawnedEnemies++;
@@ -55,9 +56,11 @@ namespace towerdef.Managers
         {
             enemy.HealthPoints -= damage;
             if (!enemy.IsAlive())
+            {
                 Remove(enemy);
+                LevelStatsHelper.IncreaseWaveKillCount();
+                Level.AddGold(enemy.DropsGold);
+            }
         }
-
-        // todo: AI pathing for enemies.
     }
 }

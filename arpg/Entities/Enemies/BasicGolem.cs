@@ -4,16 +4,17 @@ using towerdef.Helpers;
 
 namespace towerdef.Entities.Enemies
 {
-    public class BasicSkeleton : Enemy
+    public class BasicGolem : Enemy
     {
         private Rectangle _healthRec;
 
-        public BasicSkeleton(Texture2D texture) : base(texture)
+        public BasicGolem(Texture2D texture) : base(texture)
         {
             HealthPoints = 100;
             Damage = 10;
             LinearVelocity = 0.5f;
             Position = new Vector2(Game1.ScreenWidth, Game1.ScreenHeight / 2);
+            DropsGold = 150;
         }
 
         public override void Update(GameTime gameTime)
@@ -26,12 +27,12 @@ namespace towerdef.Entities.Enemies
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
         {
             // draw hp bar
             _healthRec = new Rectangle((int)Position.X - 30, (int)Position.Y - 50 , HealthPoints / 2, 10);
             spriteBatch.Draw(TextureHelper.HealthTexture, _healthRec, Color.White);
-            base.Draw(gameTime, spriteBatch);
+            base.Draw(gameTime, spriteBatch, scale);
         }
     }
 }
