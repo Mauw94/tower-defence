@@ -36,6 +36,10 @@ namespace towerdef.Entities.Towers
                 direction.Normalize();
                 Position += direction * LinearVelocity;
             }
+            else
+            {
+                MissileManager.Remove(this);
+            }
 
             base.Update(gameTime);
         }

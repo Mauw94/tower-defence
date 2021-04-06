@@ -24,8 +24,6 @@ namespace towerdef.GameStates
 
         private SpriteFont _font;
 
-        private List<Sprite> _sprites;
-
         private EnemyManager _enemyManager;
         private MissileManager _missileManager;
         private BuildManager _buildManager;
@@ -76,11 +74,13 @@ namespace towerdef.GameStates
         public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
                 _levelStarted = true;
+                LevelStatsHelper.WaveEnd = false;
+            }
 
             if (LevelStatsHelper.WaveEnd)
             {
-                Console.WriteLine("### resetting level, waiting for next wave");
                 _levelStarted = false;
                 Reset();
             }
@@ -118,7 +118,11 @@ namespace towerdef.GameStates
             spriteBatch.Draw(_gameMap, new Vector2(0, 0), Color.White);
 
             // draw gold.
-            spriteBatch.DrawString(_font, Level.Gold.ToString(), new Vector2(10, 10), Color.Black);
+            spriteBatch.DrawString(_font, "Gold : " + Level.Gold.ToString(), new Vector2(15, 10), Color.Black);
+
+            // draw wave counter.
+            spriteBatch.DrawString(_font, "Wave: " + LevelStatsHelper.WaveCounter + "/"
+                + LevelStatsHelper.Level1.AmountOfWaves, new Vector2(100, 10), Color.Black);
 
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())
