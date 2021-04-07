@@ -11,10 +11,12 @@ namespace towerdef.Entities.Towers
     public class Missile : Sprite
     {
         public static int Damage { get; private set; }
-        public static float ShootInteval = 3f;
+        public static float ShootInteval = 2f;
 
         private Enemy _enemyToTarget;
-        private Enemy _checkIfIsAlive;
+        // Enemy can do by another missile from another tower before a missile can hit,
+        // so we need to check again before hit.
+        private Enemy _checkIfAlive;
 
         public Missile(Texture2D texture, Sprite parent) : base(texture)
         {
@@ -30,9 +32,9 @@ namespace towerdef.Entities.Towers
         public override void Update(GameTime gameTime)
         {
             if (_enemyToTarget != null) 
-                 _checkIfIsAlive = EnemyManager.Enemies.Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
+                 _checkIfAlive = EnemyManager.Enemies.Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
             
-            if (_checkIfIsAlive == null)
+            if (_checkIfAlive == null)
             {
                 MissileManager.Remove(this);
                 return;
@@ -50,7 +52,7 @@ namespace towerdef.Entities.Towers
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if (_checkIfIsAlive != null)
+            if (_checkIfAlive != null)
                 base.Draw(gameTime, spriteBatch);
         }
 

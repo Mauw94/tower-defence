@@ -53,8 +53,6 @@ namespace towerdef.Managers
 
             if (_timer > Animation.FrameSpeed)
             {
-                Console.WriteLine(this.GetHashCode());
-
                 _timer = 0f;
                 Animation.CurrentFrame++;
 

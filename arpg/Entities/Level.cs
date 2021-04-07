@@ -10,7 +10,7 @@ namespace towerdef.Entities
 
         public static bool Buy(int cost)
         {
-            if (Gold > cost)
+            if (Gold >= cost)
             {
                 Gold -= cost;
                 return true;

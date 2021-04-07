@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using towerdef;
 using towerdef.Entities.Towers;
-using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
 
@@ -25,7 +23,6 @@ namespace arpg.Entities.Towers
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (_timer >= Missile.ShootInteval)
             {
-                Console.WriteLine("tick");
                 _timer = 0f;
                 if (EnemyManager.Enemies.Count > 0)
                     Shoot();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using towerdef.Entities;
 using towerdef.Entities.Enemies;
 using towerdef.Helpers;
-using towerdef.Models;
 
 namespace towerdef.Managers
 {

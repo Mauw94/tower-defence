@@ -13,7 +13,7 @@ namespace towerdef.Entities.Enemies
             Damage = 10;
             LinearVelocity = 0.5f;
             Position = new Vector2(Game1.ScreenWidth, Game1.ScreenHeight / 2);
-            DropsGold = 150;
+            DropsGold = 50;
         }
 
         public override void Update(GameTime gameTime)

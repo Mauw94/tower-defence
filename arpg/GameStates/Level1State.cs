@@ -7,7 +7,6 @@ using towerdef.Entities;
 using towerdef.Helpers;
 using towerdef.Levels;
 using towerdef.Managers;
-using towerdef.Models;
 
 namespace towerdef.GameStates
 {
@@ -101,7 +100,7 @@ namespace towerdef.GameStates
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 _levelStarted = true;
-                LevelStatsHelper.WaveEnd = false;
+                LevelStatsHelper.Reset();
             }
 
             if (LevelStatsHelper.WaveEnd)
