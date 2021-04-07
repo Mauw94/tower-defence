@@ -21,7 +21,7 @@ namespace towerdef.GameStates
         private Texture2D _undoButton;
         private Texture2D _healthTexture;
 
-        private List<Texture2D> _enemyWalkingAnimations;
+        private List<Texture2D> _enemyWalkingTextures;
 
         private SpriteFont _font;
 
@@ -50,7 +50,7 @@ namespace towerdef.GameStates
             _healthTexture = _content.Load<Texture2D>("health");
 
             // load animation images.
-            _enemyWalkingAnimations = new List<Texture2D>
+            _enemyWalkingTextures = new List<Texture2D>
             {
                 _content.Load<Texture2D>("Golem_01_Walking_000"),
                 _content.Load<Texture2D>("Golem_01_Walking_001"),
@@ -72,11 +72,6 @@ namespace towerdef.GameStates
                 _content.Load<Texture2D>("Golem_01_Walking_017")
             };
 
-            var enemyAnimations = new Dictionary<string, Animation>()
-            {
-                { "Walking", new Animation(_enemyWalkingAnimations) }
-            };
-
             // load fonts.
             _font = _content.Load<SpriteFont>("game");
 
@@ -87,9 +82,10 @@ namespace towerdef.GameStates
             TextureHelper.HudTexture = _hudTexture;
             TextureHelper.UndoButtonTexture = _undoButton;
             TextureHelper.MissileTexture = _missileTexture;
+            TextureHelper.EnemyWalkingTextures = _enemyWalkingTextures;
 
             // initialize managers.
-            _enemyManager = new EnemyManager(enemyAnimations);
+            _enemyManager = new EnemyManager();
             _missileManager = new MissileManager();
             _buildManager = new BuildManager();
 

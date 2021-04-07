@@ -1,13 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using towerdef.Models;
 
 namespace towerdef.Managers
 {
     public class AnimationManager
     {
-        private float _timer;
+        private float _timer = 0f;
+
         public Vector2 Position { get; set; }
+
         public Animation Animation;
 
         public AnimationManager(Animation animation)
@@ -50,6 +53,8 @@ namespace towerdef.Managers
 
             if (_timer > Animation.FrameSpeed)
             {
+                Console.WriteLine(this.GetHashCode());
+
                 _timer = 0f;
                 Animation.CurrentFrame++;
 

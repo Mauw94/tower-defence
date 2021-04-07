@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace towerdef.Helpers
 {
@@ -15,5 +16,7 @@ namespace towerdef.Helpers
         public static Texture2D HudTexture { get; set; }
 
         public static Texture2D UndoButtonTexture { get; set; }
+
+        public static List<Texture2D> EnemyWalkingTextures { get; set; }
     }
 }

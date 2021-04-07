@@ -16,7 +16,7 @@ namespace towerdef.Models
             Textures = textures;
             FrameCount = textures.Count;
             IsLooping = true;
-            FrameSpeed = 0.2f;
+            FrameSpeed = 0.1f;
         }
     }
 }

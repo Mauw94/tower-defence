@@ -1,15 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using towerdef.Models;
 
 namespace towerdef.Entities.Enemies
 {
     public class BasicGolem : Enemy
     {
-
-        public BasicGolem(Dictionary<string, Animation> animations) 
-            : base(animations)
+        public BasicGolem() 
+            : base()
         {
             MaxHealthPoints = 150;
             HealthPoints = MaxHealthPoints;

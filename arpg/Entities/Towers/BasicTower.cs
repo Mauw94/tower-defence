@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using towerdef;
 using towerdef.Entities.Towers;
 using towerdef.Helpers;
@@ -21,24 +22,17 @@ namespace arpg.Entities.Towers
 
         public override void Update(GameTime gameTime)
         {
-            foreach (var enemy in EnemyManager.Enemies)
+            _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (_timer >= Missile.ShootInteval)
             {
-                if (LevelStatsHelper.EnemyInShootingDistance(enemy, this))
-                {
-                    _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                    if (_timer > Missile.ShootInteval)
-                    {
-                        _timer = 0f;
-                        if (EnemyManager.Enemies.Count > 0)
-                            Shoot();
-                        else
-                            MissileManager.Missiles.Clear();
-                    }
-                }
-                
+                Console.WriteLine("tick");
+                _timer = 0f;
+                if (EnemyManager.Enemies.Count > 0)
+                    Shoot();
+                else
+                    MissileManager.Missiles.Clear();
             }
-
+            
             base.Update(gameTime);
         }
 

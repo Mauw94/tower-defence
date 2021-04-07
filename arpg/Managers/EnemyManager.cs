@@ -15,17 +15,14 @@ namespace towerdef.Managers
 
         private int _spawnedEnemies;
 
-        private static Dictionary<string, Animation> _animations;
-
-        public EnemyManager(Dictionary<string, Animation> animations)
+        public EnemyManager()
         {
             Enemies = new List<Enemy>();
-            _animations = animations;
         }
 
         public static BasicGolem GenerateSkeleton()
         {
-            var skeleton = new BasicGolem(_animations);
+            var skeleton = new BasicGolem();
             Enemies.Add(skeleton);
 
             return skeleton;

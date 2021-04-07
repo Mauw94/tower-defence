@@ -12,7 +12,7 @@ namespace towerdef.Entities.Enemies
     public class Enemy : Sprite
     {
         protected AnimationManager _animationManager;
-        protected Dictionary<string, Animation> _animations;
+        protected Animation _animation;
 
         public int MaxHealthPoints { get; set; }
         public int HealthPoints { get; set; }
@@ -33,13 +33,13 @@ namespace towerdef.Entities.Enemies
         {
         }
 
-        public Enemy(Dictionary<string, Animation> animations)
+        public Enemy() : base()
         {
             Scale = 0.1f;
 
-            _animations = animations;
-            _animationManager = new AnimationManager(_animations.First().Value);
-            _animationManager.Play(_animations["Walking"]);
+            _animation = new Animation(TextureHelper.EnemyWalkingTextures);
+            _animationManager = new AnimationManager(_animation);
+            _animationManager.Play(_animation);
 
             _texture = _animationManager.Animation.Textures[_animationManager.Animation.CurrentFrame];
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);

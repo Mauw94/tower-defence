@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using towerdef.Entities.Enemies;
 using towerdef.Helpers;
@@ -12,9 +11,10 @@ namespace towerdef.Entities.Towers
     public class Missile : Sprite
     {
         public static int Damage { get; private set; }
-        public static float ShootInteval { get; private set; }
+        public static float ShootInteval = 3f;
 
         private Enemy _enemyToTarget;
+        private Enemy _checkIfIsAlive;
 
         public Missile(Texture2D texture, Sprite parent) : base(texture)
         {
@@ -22,7 +22,6 @@ namespace towerdef.Entities.Towers
             // Missile will be super class.
             Damage = 40;
             LinearVelocity = 5f;
-            ShootInteval = 2.5f;
             Parent = parent;
 
             TargetRandomEnemy();
@@ -30,9 +29,10 @@ namespace towerdef.Entities.Towers
 
         public override void Update(GameTime gameTime)
         {
-            var checkIfEnemyStillAlive = EnemyManager.Enemies.Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
+            if (_enemyToTarget != null) 
+                 _checkIfIsAlive = EnemyManager.Enemies.Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
             
-            if (checkIfEnemyStillAlive == null)
+            if (_checkIfIsAlive == null)
             {
                 MissileManager.Remove(this);
                 return;
@@ -50,7 +50,8 @@ namespace towerdef.Entities.Towers
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime, spriteBatch);
+            if (_checkIfIsAlive != null)
+                base.Draw(gameTime, spriteBatch);
         }
 
         void TargetRandomEnemy()
