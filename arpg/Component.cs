@@ -7,6 +7,6 @@ namespace towerdef
     {
         public abstract void Update(GameTime gameTime);
 
-        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale);
+        public abstract void Draw(GameTime gameTime, SpriteBatch spriteBatch);
     }
 }

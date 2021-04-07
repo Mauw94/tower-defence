@@ -42,9 +42,9 @@ namespace arpg.Entities.Towers
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime, spriteBatch, scale);
+            base.Draw(gameTime, spriteBatch);
         }
 
         private void Shoot()

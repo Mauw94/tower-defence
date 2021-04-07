@@ -88,16 +88,16 @@ namespace towerdef.Levels
             }
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(TextureHelper.UndoButtonTexture, new Vector2(xPosHud, yPosHud + _hudSelectBoxRec.Height), Color.Black);
             spriteBatch.Draw(TextureHelper.HudTexture, new Vector2(xPosHud, yPosHud), Color.Black);
 
-            _exampleTower.Draw(gameTime, spriteBatch, scale);
+            _exampleTower.Draw(gameTime, spriteBatch);
 
             if (_dragging)
             {
-                _draggedSprite.Draw(gameTime, spriteBatch, scale);
+                _draggedSprite.Draw(gameTime, spriteBatch);
             }
         }
 

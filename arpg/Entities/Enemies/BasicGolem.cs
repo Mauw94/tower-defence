@@ -1,16 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using towerdef.Helpers;
+using System.Collections.Generic;
+using towerdef.Models;
 
 namespace towerdef.Entities.Enemies
 {
     public class BasicGolem : Enemy
     {
-        private Rectangle _healthRec;
 
-        public BasicGolem(Texture2D texture) : base(texture)
+        public BasicGolem(Dictionary<string, Animation> animations) 
+            : base(animations)
         {
-            HealthPoints = 100;
+            MaxHealthPoints = 150;
+            HealthPoints = MaxHealthPoints;
             Damage = 10;
             LinearVelocity = 0.5f;
             Position = new Vector2(Game1.ScreenWidth, Game1.ScreenHeight / 2);
@@ -27,12 +29,9 @@ namespace towerdef.Entities.Enemies
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            // draw hp bar
-            _healthRec = new Rectangle((int)Position.X - 30, (int)Position.Y - 50 , HealthPoints / 2, 10);
-            spriteBatch.Draw(TextureHelper.HealthTexture, _healthRec, Color.White);
-            base.Draw(gameTime, spriteBatch, scale);
+            base.Draw(gameTime, spriteBatch);
         }
     }
 }

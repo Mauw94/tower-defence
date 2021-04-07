@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using towerdef.Entities;
 using towerdef.Entities.Enemies;
 using towerdef.Helpers;
+using towerdef.Models;
 
 namespace towerdef.Managers
 {
@@ -14,14 +15,17 @@ namespace towerdef.Managers
 
         private int _spawnedEnemies;
 
-        public EnemyManager()
+        private static Dictionary<string, Animation> _animations;
+
+        public EnemyManager(Dictionary<string, Animation> animations)
         {
             Enemies = new List<Enemy>();
+            _animations = animations;
         }
 
         public static BasicGolem GenerateSkeleton()
         {
-            var skeleton = new BasicGolem(TextureHelper.BasicSkeletonTexture);
+            var skeleton = new BasicGolem(_animations);
             Enemies.Add(skeleton);
 
             return skeleton;

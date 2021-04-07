@@ -2,13 +2,12 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 using towerdef.Entities;
 using towerdef.Helpers;
 using towerdef.Levels;
 using towerdef.Managers;
-using towerdef.Sprites;
+using towerdef.Models;
 
 namespace towerdef.GameStates
 {
@@ -21,6 +20,8 @@ namespace towerdef.GameStates
         private Texture2D _hudTexture;
         private Texture2D _undoButton;
         private Texture2D _healthTexture;
+
+        private List<Texture2D> _enemyWalkingAnimations;
 
         private SpriteFont _font;
 
@@ -48,6 +49,34 @@ namespace towerdef.GameStates
             _undoButton = _content.Load<Texture2D>("undo");
             _healthTexture = _content.Load<Texture2D>("health");
 
+            // load animation images.
+            _enemyWalkingAnimations = new List<Texture2D>
+            {
+                _content.Load<Texture2D>("Golem_01_Walking_000"),
+                _content.Load<Texture2D>("Golem_01_Walking_001"),
+                _content.Load<Texture2D>("Golem_01_Walking_002"),
+                _content.Load<Texture2D>("Golem_01_Walking_003"),
+                _content.Load<Texture2D>("Golem_01_Walking_004"),
+                _content.Load<Texture2D>("Golem_01_Walking_005"),
+                _content.Load<Texture2D>("Golem_01_Walking_006"),
+                _content.Load<Texture2D>("Golem_01_Walking_007"),
+                _content.Load<Texture2D>("Golem_01_Walking_008"),
+                _content.Load<Texture2D>("Golem_01_Walking_009"),
+                _content.Load<Texture2D>("Golem_01_Walking_010"),
+                _content.Load<Texture2D>("Golem_01_Walking_011"),
+                _content.Load<Texture2D>("Golem_01_Walking_012"),
+                _content.Load<Texture2D>("Golem_01_Walking_013"),
+                _content.Load<Texture2D>("Golem_01_Walking_014"),
+                _content.Load<Texture2D>("Golem_01_Walking_015"),
+                _content.Load<Texture2D>("Golem_01_Walking_016"),
+                _content.Load<Texture2D>("Golem_01_Walking_017")
+            };
+
+            var enemyAnimations = new Dictionary<string, Animation>()
+            {
+                { "Walking", new Animation(_enemyWalkingAnimations) }
+            };
+
             // load fonts.
             _font = _content.Load<SpriteFont>("game");
 
@@ -60,7 +89,7 @@ namespace towerdef.GameStates
             TextureHelper.MissileTexture = _missileTexture;
 
             // initialize managers.
-            _enemyManager = new EnemyManager();
+            _enemyManager = new EnemyManager(enemyAnimations);
             _missileManager = new MissileManager();
             _buildManager = new BuildManager();
 
@@ -126,21 +155,21 @@ namespace towerdef.GameStates
 
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())
-                build.Draw(gameTime, spriteBatch, 1);
+                build.Draw(gameTime, spriteBatch);
 
             // draw enemies and missiles being fired.
             if (_levelStarted)
             {
                 foreach (var enemy in EnemyManager.Enemies.ToArray())
-                    enemy.Draw(gameTime, spriteBatch, 0.15f);
+                    enemy.Draw(gameTime, spriteBatch);
                 
                 foreach (var missiles in MissileManager.Missiles.ToArray())
-                    missiles.Draw(gameTime, spriteBatch, 1);
+                    missiles.Draw(gameTime, spriteBatch);
             } 
             else
             {
                 // draw hud.
-                _builderHud.Draw(gameTime, spriteBatch, 1);
+                _builderHud.Draw(gameTime, spriteBatch);
             }
 
             spriteBatch.End();

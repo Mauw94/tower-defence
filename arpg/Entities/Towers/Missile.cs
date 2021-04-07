@@ -36,17 +36,13 @@ namespace towerdef.Entities.Towers
                 direction.Normalize();
                 Position += direction * LinearVelocity;
             }
-            else
-            {
-                MissileManager.Remove(this);
-            }
 
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale )
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime, spriteBatch, scale);
+            base.Draw(gameTime, spriteBatch);
         }
 
         void TargetRandomEnemy()

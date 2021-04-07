@@ -21,6 +21,7 @@ namespace towerdef.Sprites
 
         public float RotationVelocity = 2.3f;
         public float LinearVelocity = 3.5f;
+        public float Scale = 1f;
         public float Layer;
 
         public Sprite Parent;
@@ -31,7 +32,8 @@ namespace towerdef.Sprites
         {
             get
             {
-                return new Rectangle((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height);
+                return new Rectangle((int)Position.X, (int)Position.Y, 
+                    _texture.Width, _texture.Height);
             }
         }
 
@@ -42,14 +44,18 @@ namespace towerdef.Sprites
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
         }
 
+        public Sprite()
+        {
+        }
+
         public override void Update(GameTime gameTime)
         {
 
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, float scale)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Position, null, Color.White, _rotation, Origin, scale, SpriteEffects.FlipHorizontally, 0);
+            spriteBatch.Draw(_texture, Position, null, Color.White, _rotation, Origin, Scale, SpriteEffects.FlipHorizontally, 0);
         }
 
         public object Clone()
