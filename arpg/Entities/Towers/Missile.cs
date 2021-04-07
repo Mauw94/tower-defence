@@ -30,6 +30,14 @@ namespace towerdef.Entities.Towers
 
         public override void Update(GameTime gameTime)
         {
+            var checkIfEnemyStillAlive = EnemyManager.Enemies.Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
+            
+            if (checkIfEnemyStillAlive == null)
+            {
+                MissileManager.Remove(this);
+                return;
+            }
+
             if (_enemyToTarget != null)
             {
                 Vector2 direction = _enemyToTarget.Position - Position;

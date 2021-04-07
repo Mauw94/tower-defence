@@ -146,6 +146,7 @@ namespace towerdef.GameStates
             // draw game map.
             spriteBatch.Draw(_gameMap, new Vector2(0, 0), Color.White);
 
+            // todo: move to separate class -> DrawHudClass?
             // draw gold.
             spriteBatch.DrawString(_font, "Gold : " + Level.Gold.ToString(), new Vector2(15, 10), Color.Black);
 
