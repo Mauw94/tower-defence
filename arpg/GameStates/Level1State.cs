@@ -15,12 +15,12 @@ namespace towerdef.GameStates
         private Texture2D _gameMap;
         private Texture2D _basicTowerTexture;
         private Texture2D _missileTexture;
-        private Texture2D _basicGolemTexture;
         private Texture2D _hudTexture;
         private Texture2D _undoButton;
         private Texture2D _healthTexture;
 
-        private List<Texture2D> _enemyWalkingTextures;
+        private List<Texture2D> _enemy1WalkingTextures;
+        private List<Texture2D> _enemy2WalkingTextures;
 
         private SpriteFont _font;
 
@@ -43,32 +43,52 @@ namespace towerdef.GameStates
             _gameMap = _content.Load<Texture2D>("level1");
             _basicTowerTexture = _content.Load<Texture2D>("tower1");
             _missileTexture = _content.Load<Texture2D>("missile");
-            _basicGolemTexture = _content.Load<Texture2D>("Golem_01_Idle_000");
             _hudTexture = _content.Load<Texture2D>("builderhud");
             _undoButton = _content.Load<Texture2D>("undo");
             _healthTexture = _content.Load<Texture2D>("health");
 
             // load animation images.
-            _enemyWalkingTextures = new List<Texture2D>
+            _enemy1WalkingTextures = new List<Texture2D>
             {
-                _content.Load<Texture2D>("Golem_01_Walking_000"),
-                _content.Load<Texture2D>("Golem_01_Walking_001"),
-                _content.Load<Texture2D>("Golem_01_Walking_002"),
-                _content.Load<Texture2D>("Golem_01_Walking_003"),
-                _content.Load<Texture2D>("Golem_01_Walking_004"),
-                _content.Load<Texture2D>("Golem_01_Walking_005"),
-                _content.Load<Texture2D>("Golem_01_Walking_006"),
-                _content.Load<Texture2D>("Golem_01_Walking_007"),
-                _content.Load<Texture2D>("Golem_01_Walking_008"),
-                _content.Load<Texture2D>("Golem_01_Walking_009"),
-                _content.Load<Texture2D>("Golem_01_Walking_010"),
-                _content.Load<Texture2D>("Golem_01_Walking_011"),
-                _content.Load<Texture2D>("Golem_01_Walking_012"),
-                _content.Load<Texture2D>("Golem_01_Walking_013"),
-                _content.Load<Texture2D>("Golem_01_Walking_014"),
-                _content.Load<Texture2D>("Golem_01_Walking_015"),
-                _content.Load<Texture2D>("Golem_01_Walking_016"),
-                _content.Load<Texture2D>("Golem_01_Walking_017")
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_000"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_001"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_002"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_003"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_004"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_005"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_006"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_007"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_008"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_009"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_010"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_011"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_012"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_013"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_014"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_015"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_016"),
+                _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_017")
+            };
+            _enemy2WalkingTextures = new List<Texture2D>
+            {
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_000"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_001"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_002"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_003"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_004"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_005"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_006"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_007"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_008"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_009"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_010"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_011"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_012"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_013"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_014"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_015"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_016"),
+                _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_017")
             };
 
             // load fonts.
@@ -76,12 +96,14 @@ namespace towerdef.GameStates
 
             // set textures to use throughout the game.
             TextureHelper.HealthTexture = _healthTexture;
-            TextureHelper.BasicSkeletonTexture = _basicGolemTexture;
             TextureHelper.BasicTowerTexture = _basicTowerTexture;
             TextureHelper.HudTexture = _hudTexture;
             TextureHelper.UndoButtonTexture = _undoButton;
             TextureHelper.MissileTexture = _missileTexture;
-            TextureHelper.EnemyWalkingTextures = _enemyWalkingTextures;
+
+            // animation textures
+            TextureHelper.Enemy1WalkingTextures = _enemy1WalkingTextures;
+            TextureHelper.Enemy2WalkingTextures = _enemy2WalkingTextures;
 
             // initialize managers.
             _enemyManager = new EnemyManager();

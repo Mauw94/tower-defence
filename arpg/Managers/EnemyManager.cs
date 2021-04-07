@@ -19,12 +19,12 @@ namespace towerdef.Managers
             Enemies = new List<Enemy>();
         }
 
-        public static BasicGolem GenerateSkeleton()
+        public static Golem1 GenerateGolem()
         {
-            var skeleton = new BasicGolem();
-            Enemies.Add(skeleton);
+            var enemy = new Golem1(TextureHelper.Enemy2WalkingTextures);
+            Enemies.Add(enemy);
 
-            return skeleton;
+            return enemy;
         }
 
         public void PeriodicallySpawnEnemy(GameTime gameTime)
@@ -36,7 +36,7 @@ namespace towerdef.Managers
             {
                 _timer = 0f;
                 _spawnedEnemies++;
-                GenerateSkeleton();
+                GenerateGolem();
             }
         }
 

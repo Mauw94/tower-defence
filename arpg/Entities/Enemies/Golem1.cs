@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace towerdef.Entities.Enemies
 {
-    public class BasicGolem : Enemy
+    public class Golem1 : Enemy
     {
-        public BasicGolem() 
-            : base()
+        public Golem1(List<Texture2D> animationTextures) 
+            : base(animationTextures)
         {
             MaxHealthPoints = 150;
             HealthPoints = MaxHealthPoints;
@@ -18,8 +19,7 @@ namespace towerdef.Entities.Enemies
 
         public override void Update(GameTime gameTime)
         {
-            var goTo = new Vector2(0, Game1.ScreenHeight / 2);
-            Vector2 direction = goTo - Position;
+            Vector2 direction = new Vector2(0, Game1.ScreenHeight / 2) - Position;
             direction.Normalize();
             Position += direction * LinearVelocity;
 

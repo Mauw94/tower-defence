@@ -33,11 +33,11 @@ namespace towerdef.Entities.Enemies
         {
         }
 
-        public Enemy() : base()
+        public Enemy(List<Texture2D> animationTextures) : base()
         {
             Scale = 0.1f;
 
-            _animation = new Animation(TextureHelper.EnemyWalkingTextures);
+            _animation = new Animation(animationTextures);
             _animationManager = new AnimationManager(_animation);
             _animationManager.Play(_animation);
 

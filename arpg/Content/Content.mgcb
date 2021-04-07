@@ -56,7 +56,7 @@
 /processorParam:TextureFormat=Compressed
 /build:game.spritefont
 
-#begin Golem_01_Idle_000.png
+#begin Golem_01_Walking/Golem_01_Walking_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -66,9 +66,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Idle_000.png
+/build:Golem_01_Walking/Golem_01_Walking_000.png
 
-#begin Golem_01_Walking_000.png
+#begin Golem_01_Walking/Golem_01_Walking_001.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -78,9 +78,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_000.png
+/build:Golem_01_Walking/Golem_01_Walking_001.png
 
-#begin Golem_01_Walking_001.png
+#begin Golem_01_Walking/Golem_01_Walking_002.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -90,9 +90,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_001.png
+/build:Golem_01_Walking/Golem_01_Walking_002.png
 
-#begin Golem_01_Walking_002.png
+#begin Golem_01_Walking/Golem_01_Walking_003.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -102,9 +102,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_002.png
+/build:Golem_01_Walking/Golem_01_Walking_003.png
 
-#begin Golem_01_Walking_003.png
+#begin Golem_01_Walking/Golem_01_Walking_004.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -114,9 +114,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_003.png
+/build:Golem_01_Walking/Golem_01_Walking_004.png
 
-#begin Golem_01_Walking_004.png
+#begin Golem_01_Walking/Golem_01_Walking_005.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -126,9 +126,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_004.png
+/build:Golem_01_Walking/Golem_01_Walking_005.png
 
-#begin Golem_01_Walking_005.png
+#begin Golem_01_Walking/Golem_01_Walking_006.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -138,9 +138,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_005.png
+/build:Golem_01_Walking/Golem_01_Walking_006.png
 
-#begin Golem_01_Walking_006.png
+#begin Golem_01_Walking/Golem_01_Walking_007.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -150,9 +150,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_006.png
+/build:Golem_01_Walking/Golem_01_Walking_007.png
 
-#begin Golem_01_Walking_007.png
+#begin Golem_01_Walking/Golem_01_Walking_008.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -162,9 +162,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_007.png
+/build:Golem_01_Walking/Golem_01_Walking_008.png
 
-#begin Golem_01_Walking_008.png
+#begin Golem_01_Walking/Golem_01_Walking_009.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -174,9 +174,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_008.png
+/build:Golem_01_Walking/Golem_01_Walking_009.png
 
-#begin Golem_01_Walking_009.png
+#begin Golem_01_Walking/Golem_01_Walking_010.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -186,9 +186,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_009.png
+/build:Golem_01_Walking/Golem_01_Walking_010.png
 
-#begin Golem_01_Walking_010.png
+#begin Golem_01_Walking/Golem_01_Walking_011.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -198,9 +198,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_010.png
+/build:Golem_01_Walking/Golem_01_Walking_011.png
 
-#begin Golem_01_Walking_011.png
+#begin Golem_01_Walking/Golem_01_Walking_012.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -210,9 +210,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_011.png
+/build:Golem_01_Walking/Golem_01_Walking_012.png
 
-#begin Golem_01_Walking_012.png
+#begin Golem_01_Walking/Golem_01_Walking_013.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -222,9 +222,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_012.png
+/build:Golem_01_Walking/Golem_01_Walking_013.png
 
-#begin Golem_01_Walking_013.png
+#begin Golem_01_Walking/Golem_01_Walking_014.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -234,9 +234,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_013.png
+/build:Golem_01_Walking/Golem_01_Walking_014.png
 
-#begin Golem_01_Walking_014.png
+#begin Golem_01_Walking/Golem_01_Walking_015.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -246,9 +246,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_014.png
+/build:Golem_01_Walking/Golem_01_Walking_015.png
 
-#begin Golem_01_Walking_015.png
+#begin Golem_01_Walking/Golem_01_Walking_016.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -258,9 +258,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_015.png
+/build:Golem_01_Walking/Golem_01_Walking_016.png
 
-#begin Golem_01_Walking_016.png
+#begin Golem_01_Walking/Golem_01_Walking_017.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -270,9 +270,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_016.png
+/build:Golem_01_Walking/Golem_01_Walking_017.png
 
-#begin Golem_01_Walking_017.png
+#begin Golem_02_Walking/Golem_02_Walking_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -282,7 +282,211 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Golem_01_Walking_017.png
+/build:Golem_02_Walking/Golem_02_Walking_000.png
+
+#begin Golem_02_Walking/Golem_02_Walking_001.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_001.png
+
+#begin Golem_02_Walking/Golem_02_Walking_002.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_002.png
+
+#begin Golem_02_Walking/Golem_02_Walking_003.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_003.png
+
+#begin Golem_02_Walking/Golem_02_Walking_004.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_004.png
+
+#begin Golem_02_Walking/Golem_02_Walking_005.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_005.png
+
+#begin Golem_02_Walking/Golem_02_Walking_006.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_006.png
+
+#begin Golem_02_Walking/Golem_02_Walking_007.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_007.png
+
+#begin Golem_02_Walking/Golem_02_Walking_008.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_008.png
+
+#begin Golem_02_Walking/Golem_02_Walking_009.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_009.png
+
+#begin Golem_02_Walking/Golem_02_Walking_010.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_010.png
+
+#begin Golem_02_Walking/Golem_02_Walking_011.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_011.png
+
+#begin Golem_02_Walking/Golem_02_Walking_012.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_012.png
+
+#begin Golem_02_Walking/Golem_02_Walking_013.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_013.png
+
+#begin Golem_02_Walking/Golem_02_Walking_014.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_014.png
+
+#begin Golem_02_Walking/Golem_02_Walking_015.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_015.png
+
+#begin Golem_02_Walking/Golem_02_Walking_016.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_016.png
+
+#begin Golem_02_Walking/Golem_02_Walking_017.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Golem_02_Walking/Golem_02_Walking_017.png
 
 #begin health.png
 /importer:TextureImporter

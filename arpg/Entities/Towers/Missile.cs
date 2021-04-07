@@ -16,7 +16,7 @@ namespace towerdef.Entities.Towers
         private Enemy _enemyToTarget;
         // Enemy can do by another missile from another tower before a missile can hit,
         // so we need to check again before hit.
-        private Enemy _checkIfAlive;
+        private Enemy _checkIfAliveOrInRange;
 
         public Missile(Texture2D texture, Sprite parent) : base(texture)
         {
@@ -32,9 +32,10 @@ namespace towerdef.Entities.Towers
         public override void Update(GameTime gameTime)
         {
             if (_enemyToTarget != null) 
-                 _checkIfAlive = EnemyManager.Enemies.Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
+                 _checkIfAliveOrInRange = EnemyManager.Enemies
+                    .Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
             
-            if (_checkIfAlive == null)
+            if (_checkIfAliveOrInRange == null)
             {
                 MissileManager.Remove(this);
                 return;
@@ -52,7 +53,7 @@ namespace towerdef.Entities.Towers
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if (_checkIfAlive != null)
+            if (_checkIfAliveOrInRange != null)
                 base.Draw(gameTime, spriteBatch);
         }
 
