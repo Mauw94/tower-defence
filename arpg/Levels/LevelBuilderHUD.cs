@@ -58,6 +58,7 @@ namespace towerdef.Levels
             }
 
             // clicked on basic tower.
+            // todo: add type of tower to build and pass to buildmanager.
             if (!_dragging)
             {
                 if (_currentMouseState.LeftButton == ButtonState.Pressed

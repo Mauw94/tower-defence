@@ -1,4 +1,5 @@
-﻿using towerdef.Entities.Towers;
+﻿using System;
+using towerdef.Entities.Towers.Missiles;
 using towerdef.Managers;
 
 namespace towerdef.Levels
@@ -18,6 +19,10 @@ namespace towerdef.Levels
                 {
                     if (missile.Rectangle.Intersects(enemy.Rectangle))
                     {
+                        if (missile.HasSpecialAbility)
+                        {
+                            Console.WriteLine("do special things");
+                        }
                         MissileManager.Remove(missile);
                         EnemyManager.Hit(enemy, Missile.Damage);
                     }

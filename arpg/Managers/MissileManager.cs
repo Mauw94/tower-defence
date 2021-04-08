@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using towerdef.Entities.Towers;
+using towerdef.Entities.Towers.Missiles;
 using towerdef.Helpers;
 using towerdef.Sprites;
 
@@ -16,7 +16,7 @@ namespace towerdef.Managers
 
         public static Missile Generate(Sprite parent)
         {
-            var missile = new Missile(TextureHelper.MissileTexture, parent);
+            var missile = new FireMissile(TextureHelper.MissileTexture, parent);
             Missiles.Add(missile);
 
             return missile;

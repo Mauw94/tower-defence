@@ -6,12 +6,13 @@ using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
 
-namespace towerdef.Entities.Towers
+namespace towerdef.Entities.Towers.Missiles
 {
-    public class Missile : Sprite
+    public abstract class Missile : Sprite
     {
-        public static int Damage { get; private set; }
+        public static int Damage { get; protected set; }
         public static float ShootInteval = 2f;
+        public bool HasSpecialAbility { get; protected set; }
 
         private Enemy _enemyToTarget;
         // Enemy can do by another missile from another tower before a missile can hit,
@@ -20,10 +21,6 @@ namespace towerdef.Entities.Towers
 
         public Missile(Texture2D texture, Sprite parent) : base(texture)
         {
-            // todo: create other types of missiles for different towers.
-            // Missile will be super class.
-            Damage = 40;
-            LinearVelocity = 5f;
             Parent = parent;
 
             TargetRandomEnemy();
