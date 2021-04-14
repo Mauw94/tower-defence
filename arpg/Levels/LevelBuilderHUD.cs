@@ -107,9 +107,9 @@ namespace towerdef.Levels
                     {
                         EventMessageQueue.Add(new QueueMessage()
                         {
-                            DisplayTime = 3f,
+                            DisplayTime = 2.5f,
                             Message = "Not enough gold to buy this tower.",
-                        }); ;
+                        });
                     }
 
                     _draggedSprite = null;

@@ -7,9 +7,9 @@ namespace towerdef.Helpers.EventQueue
     public class EventMessageQueue
     {
         public static Queue<QueueMessage> Messages { get; set; }
+
         private float _timer;
         private string _message = string.Empty;
-
         private QueueMessage _currentMessage;
         private bool _noMessagesToShow = true;
 
@@ -21,9 +21,7 @@ namespace towerdef.Helpers.EventQueue
         public void DisplayMessages(GameTime gameTime, SpriteBatch spriteBatch, SpriteFont font)
         {
             if (_noMessagesToShow)
-            {
                 _currentMessage = Messages.Count > 0 ? Messages.Dequeue() : null;
-            }
 
             if (_currentMessage != null)
             {
