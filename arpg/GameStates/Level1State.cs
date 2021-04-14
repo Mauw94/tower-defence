@@ -49,7 +49,7 @@ namespace towerdef.GameStates
             _undoButton = _content.Load<Texture2D>("undo");
             _healthTexture = _content.Load<Texture2D>("health");
 
-            // load animation images.
+            // load animation textures.
             _enemy1WalkingTextures = new List<Texture2D>
             {
                 _content.Load<Texture2D>("Golem_01_Walking/Golem_01_Walking_000"),

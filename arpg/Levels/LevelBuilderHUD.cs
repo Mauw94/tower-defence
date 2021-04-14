@@ -51,8 +51,8 @@ namespace towerdef.Levels
 
             _fireTowerExample = new Sprite(TextureHelper.FireTowerTexture);
             _fireTowerExample.Position = new Vector2(
-                _basicTowerExample.Rectangle.Width + (_fireTowerSelectBox.Width / 2 + _fireTowerExample.Rectangle.Width / 2),
-                _fireTowerSelectBox.Height / 2 + _fireTowerExample.Rectangle.Height / 2);
+                (_fireTowerSelectBox.Width / 2 + _fireTowerExample.Rectangle.Width / 2) + _basicTowerSelectBox.Width,
+                _fireTowerSelectBox.Height / 2 + _fireTowerExample.Rectangle.Height/ 2);
         }
 
         public void Update(GameTime gameTime)
@@ -100,10 +100,13 @@ namespace towerdef.Levels
                 if (_currentMouseState.LeftButton == ButtonState.Released
                     && _previouseMouseState.LeftButton == ButtonState.Pressed)
                 {
-                    if (Level.Buy(BasicTower.Cost))
+                    if (Level.Buy(GetTowerCostFromType(_towerType)))
                         BuildManager.CreateTower(_towerType, GetTextureFromType(_towerType), _mousePos);
                     else
                         // todo: sent event that tower cannot be build.
+                        // todo: events end in some kinda of queue that will display a message on the game screen
+                        // todo: this message will then be removed after (x) seconds
+                        // todo: message is also removed from the queue.
                         Console.WriteLine("not enough cold to buy tower.");
 
                     _draggedSprite = null;
@@ -139,6 +142,16 @@ namespace towerdef.Levels
                 TowerType.Basic => TextureHelper.BasicTowerTexture,
                 TowerType.Fire => TextureHelper.FireTowerTexture,
                 _ => null,
+            };
+        }
+
+        int GetTowerCostFromType(TowerType type)
+        {
+            return type switch
+            {
+                TowerType.Basic => BasicTower.Cost,
+                TowerType.Fire=> FireTower.Cost,
+                _ => 0
             };
         }
     }
