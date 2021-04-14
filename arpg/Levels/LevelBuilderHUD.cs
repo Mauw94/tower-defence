@@ -105,12 +105,6 @@ namespace towerdef.Levels
                         BuildManager.CreateTower(_towerType, GetTextureFromType(_towerType), _mousePos);
                     else
                     {
-                        // todo: sent event that tower cannot be build.
-                        // todo: events end in some kinda of queue that will display a message on the game screen
-                        // todo: this message will then be removed after (x) seconds
-                        // todo: message is also removed from the queue.
-                        Console.WriteLine("not enough cold to buy tower.");
-
                         EventMessageQueue.Add(new QueueMessage()
                         {
                             DisplayTime = 3f,
