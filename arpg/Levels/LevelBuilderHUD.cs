@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using towerdef.Entities.Towers;
 using towerdef.Helpers;
+using towerdef.Helpers.EventQueue;
 using towerdef.Managers;
 using towerdef.Sprites;
 
@@ -103,11 +104,19 @@ namespace towerdef.Levels
                     if (Level.Buy(GetTowerCostFromType(_towerType)))
                         BuildManager.CreateTower(_towerType, GetTextureFromType(_towerType), _mousePos);
                     else
+                    {
                         // todo: sent event that tower cannot be build.
                         // todo: events end in some kinda of queue that will display a message on the game screen
                         // todo: this message will then be removed after (x) seconds
                         // todo: message is also removed from the queue.
                         Console.WriteLine("not enough cold to buy tower.");
+
+                        EventMessageQueue.Add(new QueueMessage()
+                        {
+                            DisplayTime = 3f,
+                            Message = "Not enough gold to buy this tower.",
+                        }); ;
+                    }
 
                     _draggedSprite = null;
                     _dragging = false;

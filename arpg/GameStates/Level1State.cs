@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using towerdef.Entities;
 using towerdef.Helpers;
+using towerdef.Helpers.EventQueue;
 using towerdef.Levels;
 using towerdef.Managers;
 
@@ -31,6 +31,7 @@ namespace towerdef.GameStates
 
         private LevelBuilderHUD _builderHud;
         private CollisionDetection _collisionDetection;
+        private EventMessageQueue _eventMessageQueue;
 
         private bool _levelStarted = false;
 
@@ -116,6 +117,7 @@ namespace towerdef.GameStates
             // initialize helpers
             _builderHud = new LevelBuilderHUD();
             _collisionDetection = new CollisionDetection();
+            _eventMessageQueue = new EventMessageQueue();
 
             Init();
         }
@@ -177,6 +179,9 @@ namespace towerdef.GameStates
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())
                 build.Draw(gameTime, spriteBatch);
+
+            // Show event messages.
+            _eventMessageQueue.DisplayMessages(gameTime, spriteBatch, _font);
 
             // draw enemies and missiles being fired.
             if (_levelStarted)
