@@ -4,23 +4,15 @@ using towerdef.Sprites;
 
 namespace towerdef.Entities.Towers.Missiles
 {
-    public class FireMissile : Missile
+    public class FrostMissile : Missile
     {
-        public float DamageRadius;
-
-        public FireMissile(Texture2D texture, Sprite parent) : base(texture, parent)
+        public FrostMissile(Texture2D texture, Sprite parent) : base(texture, parent)
         {
             ShootInteval = 3f;
             LinearVelocity = 5f;
-            Damage = 80;
+            Damage = 60;
 
             HasSpecialAbility = true;
-            DamageRadius = 30;
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -28,5 +20,9 @@ namespace towerdef.Entities.Towers.Missiles
             base.Draw(gameTime, spriteBatch);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
     }
 }

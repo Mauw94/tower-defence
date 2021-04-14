@@ -21,7 +21,8 @@ namespace towerdef.Levels
                     {
                         if (missile.HasSpecialAbility)
                         {
-                            Console.WriteLine("do special things");
+                            if (missile is FireMissile)
+                                Console.WriteLine("do special things");
                         }
                         MissileManager.Remove(missile);
                         EnemyManager.Hit(enemy, Missile.Damage);

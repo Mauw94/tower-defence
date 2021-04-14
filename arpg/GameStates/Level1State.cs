@@ -14,6 +14,7 @@ namespace towerdef.GameStates
     {
         private Texture2D _gameMap;
         private Texture2D _basicTowerTexture;
+        private Texture2D _fireTowerTexture;
         private Texture2D _missileTexture;
         private Texture2D _hudTexture;
         private Texture2D _undoButton;
@@ -42,6 +43,7 @@ namespace towerdef.GameStates
             // load textures.
             _gameMap = _content.Load<Texture2D>("level1");
             _basicTowerTexture = _content.Load<Texture2D>("tower1");
+            _fireTowerTexture = _content.Load<Texture2D>("firetower");
             _missileTexture = _content.Load<Texture2D>("missile");
             _hudTexture = _content.Load<Texture2D>("builderhud");
             _undoButton = _content.Load<Texture2D>("undo");
@@ -97,6 +99,7 @@ namespace towerdef.GameStates
             // set textures to use throughout the game.
             TextureHelper.HealthTexture = _healthTexture;
             TextureHelper.BasicTowerTexture = _basicTowerTexture;
+            TextureHelper.FireTowerTexture = _fireTowerTexture;
             TextureHelper.HudTexture = _hudTexture;
             TextureHelper.UndoButtonTexture = _undoButton;
             TextureHelper.MissileTexture = _missileTexture;
@@ -122,10 +125,10 @@ namespace towerdef.GameStates
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 _levelStarted = true;
-                LevelStatsHelper.Reset();
+                Level.Reset();
             }
 
-            if (LevelStatsHelper.WaveEnd)
+            if (Level.WaveEnd)
             {
                 _levelStarted = false;
                 Reset();
@@ -165,11 +168,11 @@ namespace towerdef.GameStates
 
             // todo: move to separate class -> DrawHudClass?
             // draw gold.
-            spriteBatch.DrawString(_font, "Gold : " + Level.Gold.ToString(), new Vector2(15, 10), Color.Black);
+            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.GoldAvailable.ToString(), new Vector2(15, 10), Color.Black);
 
             // draw wave counter.
-            spriteBatch.DrawString(_font, "Wave: " + LevelStatsHelper.WaveCounter + "/"
-                + LevelStatsHelper.Level1.AmountOfWaves, new Vector2(100, 10), Color.Black);
+            spriteBatch.DrawString(_font, "Wave: " + Level.WaveCounter + "/"
+                + Level.Level1.AmountOfWaves, new Vector2(100, 10), Color.Black);
 
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())

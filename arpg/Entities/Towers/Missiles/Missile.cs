@@ -59,7 +59,7 @@ namespace towerdef.Entities.Towers.Missiles
             List<Enemy> enemiesInRange = new List<Enemy>();
             foreach (var enemy in EnemyManager.Enemies)
             {
-                if (LevelStatsHelper.EnemyInShootingDistance(enemy, this.Parent))
+                if (Level.EnemyInShootingDistance(enemy, this.Parent))
                     enemiesInRange.Add(enemy);
             }
 

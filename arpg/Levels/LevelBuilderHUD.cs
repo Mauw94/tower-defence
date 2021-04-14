@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using towerdef.Entities;
+using towerdef.Entities.Towers;
 using towerdef.Helpers;
 using towerdef.Managers;
 using towerdef.Sprites;
@@ -13,7 +13,8 @@ namespace towerdef.Levels
     public class LevelBuilderHUD
     {
         // example tower to draw in the build options.
-        private Sprite _exampleTower;
+        private Sprite _basicTowerExample;
+        private Sprite _fireTowerExample;
         // sprite that is being dragged to location.
         private Sprite _draggedSprite;
 
@@ -21,7 +22,8 @@ namespace towerdef.Levels
         private readonly int yPosHud = 30;
 
         // rectangle around the select box.
-        private Rectangle _hudSelectBoxRec;
+        private Rectangle _basicTowerSelectBox;
+        private Rectangle _fireTowerSelectBox;
         // rectangle around the undo button.
         private Rectangle _undoButtonRec;
 
@@ -29,18 +31,28 @@ namespace towerdef.Levels
 
         private bool _dragging;
 
+        private TowerType _towerType;
+
         protected MouseState _currentMouseState;
         protected MouseState _previouseMouseState;
 
         public LevelBuilderHUD()
         {
-            _hudSelectBoxRec = new Rectangle(xPosHud, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
-            _undoButtonRec = new Rectangle(xPosHud, yPosHud + _hudSelectBoxRec.Height, TextureHelper.UndoButtonTexture.Width, TextureHelper.UndoButtonTexture.Height);
+            _undoButtonRec = new Rectangle(xPosHud, yPosHud + _basicTowerSelectBox.Height, TextureHelper.UndoButtonTexture.Width, TextureHelper.UndoButtonTexture.Height);
 
-            _exampleTower = new Sprite(TextureHelper.BasicTowerTexture);
-            _exampleTower.Position = new Vector2(
-                _hudSelectBoxRec.Width / 2 + _exampleTower.Rectangle.Width / 2, 
-                _hudSelectBoxRec.Height / 2 + _exampleTower.Rectangle.Height / 2);
+            // todo: textures not correct.
+            _basicTowerSelectBox = new Rectangle(xPosHud, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
+            _fireTowerSelectBox = new Rectangle(xPosHud + _basicTowerSelectBox.Width, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
+
+            _basicTowerExample = new Sprite(TextureHelper.BasicTowerTexture);
+            _basicTowerExample.Position = new Vector2(
+                _basicTowerSelectBox.Width / 2 + _basicTowerExample.Rectangle.Width / 2, 
+                _basicTowerSelectBox.Height / 2 + _basicTowerExample.Rectangle.Height / 2);
+
+            _fireTowerExample = new Sprite(TextureHelper.FireTowerTexture);
+            _fireTowerExample.Position = new Vector2(
+                _basicTowerExample.Rectangle.Width + (_fireTowerSelectBox.Width / 2 + _fireTowerExample.Rectangle.Width / 2),
+                _fireTowerSelectBox.Height / 2 + _fireTowerExample.Rectangle.Height / 2);
         }
 
         public void Update(GameTime gameTime)
@@ -63,10 +75,21 @@ namespace towerdef.Levels
             {
                 if (_currentMouseState.LeftButton == ButtonState.Pressed
                     && _previouseMouseState.LeftButton == ButtonState.Released
-                    && _hudSelectBoxRec.Contains(_currentMouseState.Position))
+                    && _basicTowerSelectBox.Contains(_currentMouseState.Position))
                 {
+                    Console.WriteLine("creating basic tower");
                     _dragging = true;
-                    CreateNewTower();
+                    _towerType = TowerType.Basic;
+                    CreateNewTower(_basicTowerExample);
+                }
+                else if (_currentMouseState.LeftButton == ButtonState.Pressed
+                    && _previouseMouseState.LeftButton == ButtonState.Released
+                    && _fireTowerSelectBox.Contains(_currentMouseState.Position))
+                {
+                    Console.WriteLine("creating fire tower");
+                    _dragging = true;
+                    _towerType = TowerType.Fire;
+                    CreateNewTower(_fireTowerExample);
                 }
             }
 
@@ -78,7 +101,7 @@ namespace towerdef.Levels
                     && _previouseMouseState.LeftButton == ButtonState.Pressed)
                 {
                     if (Level.Buy(BasicTower.Cost))
-                        BuildManager.CreateTower(TextureHelper.BasicTowerTexture, _mousePos);
+                        BuildManager.CreateTower(_towerType, GetTextureFromType(_towerType), _mousePos);
                     else
                         // todo: sent event that tower cannot be build.
                         Console.WriteLine("not enough cold to buy tower.");
@@ -91,10 +114,12 @@ namespace towerdef.Levels
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(TextureHelper.UndoButtonTexture, new Vector2(xPosHud, yPosHud + _hudSelectBoxRec.Height), Color.Black);
+            spriteBatch.Draw(TextureHelper.UndoButtonTexture, new Vector2(xPosHud, yPosHud + _basicTowerSelectBox.Height), Color.Black);
             spriteBatch.Draw(TextureHelper.HudTexture, new Vector2(xPosHud, yPosHud), Color.Black);
+            spriteBatch.Draw(TextureHelper.HudTexture, new Vector2(xPosHud + _fireTowerSelectBox.Width, yPosHud), Color.Black);
 
-            _exampleTower.Draw(gameTime, spriteBatch);
+            _basicTowerExample.Draw(gameTime, spriteBatch);
+            _fireTowerExample.Draw(gameTime, spriteBatch);
 
             if (_dragging)
             {
@@ -102,9 +127,19 @@ namespace towerdef.Levels
             }
         }
 
-        void CreateNewTower()
+        void CreateNewTower(Sprite spriteToClone)
         {
-            _draggedSprite = _exampleTower.Clone() as Sprite;
+            _draggedSprite = spriteToClone.Clone() as Sprite;
+        }
+
+        Texture2D GetTextureFromType(TowerType type)
+        {
+            return type switch
+            {
+                TowerType.Basic => TextureHelper.BasicTowerTexture,
+                TowerType.Fire => TextureHelper.FireTowerTexture,
+                _ => null,
+            };
         }
     }
 }

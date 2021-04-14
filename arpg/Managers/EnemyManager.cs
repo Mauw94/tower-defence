@@ -31,8 +31,8 @@ namespace towerdef.Managers
         {
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (_timer > LevelStatsHelper.Level1.EnemySpawnTimer 
-                && _spawnedEnemies <= LevelStatsHelper.Level1.WaveOneMaxSkeletons)
+            if (_timer > Level.Level1.EnemySpawnTimer 
+                && _spawnedEnemies <= Level.Level1.WaveOneMaxSkeletons)
             {
                 _timer = 0f;
                 _spawnedEnemies++;
@@ -58,7 +58,7 @@ namespace towerdef.Managers
             if (!enemy.IsAlive())
             {
                 Remove(enemy);
-                LevelStatsHelper.IncreaseWaveKillCount();
+                Level.IncreaseWaveKillCount();
                 Level.AddGold(enemy.DropsGold);
             }
         }

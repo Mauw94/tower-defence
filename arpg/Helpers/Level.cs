@@ -3,16 +3,17 @@ using towerdef.Sprites;
 
 namespace towerdef.Helpers
 {
-    public class LevelStatsHelper
+    public class Level
     {
         public class Level1
         {
             public static float EnemySpawnTimer = 3.5f;
             public static int WaveOneMaxSkeletons = 10;
             public static int AmountOfWaves = 2;
+            public static int TowerHealth = 50;
+            public static int GoldAvailable = 500;
         }
         
-        public static int CastleHealth = 100;
         public static bool WaveEnd { get; set; }
         public static int WaveKillCounter { get; set; }
         public static int WaveCounter = 1;
@@ -34,6 +35,21 @@ namespace towerdef.Helpers
                 WaveEnd = true;
                 WaveCounter++;
             }
+        }
+
+        public static bool Buy(int cost)
+        {
+            if (Level1.GoldAvailable >= cost)
+            {
+                Level1.GoldAvailable -= cost;
+                return true;
+            }
+            return false;
+        }
+
+        public static void AddGold(int gold)
+        {
+            Level1.GoldAvailable += gold;
         }
 
         public static void Reset()

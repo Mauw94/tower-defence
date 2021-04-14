@@ -12,5 +12,6 @@ namespace towerdef.Helpers
         public static Texture2D UndoButtonTexture { get; set; }
         public static List<Texture2D> Enemy1WalkingTextures { get; set; }
         public static List<Texture2D> Enemy2WalkingTextures { get; set; }
+        public static Texture2D FireTowerTexture { get; internal set; }
     }
 }

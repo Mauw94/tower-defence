@@ -14,9 +14,9 @@ namespace towerdef.Managers
             Missiles = new List<Missile>();
         }
 
-        public static Missile Generate(Sprite parent)
+        public static Missile Generate(Sprite parent, MissileType type)
         {
-            var missile = new FireMissile(TextureHelper.MissileTexture, parent);
+            var missile = CreateMissileFromType(parent, type);
             Missiles.Add(missile);
 
             return missile;
@@ -24,13 +24,24 @@ namespace towerdef.Managers
 
         public static void Remove(Missile missile)
         {
-            if (missile != null)
+            if (missile != null && Missiles.Contains(missile))
                 Missiles.Remove(missile);
         }
 
         public void Reset()
         {
             Missiles = new List<Missile>();
+        }
+
+        static Missile CreateMissileFromType(Sprite parent, MissileType type)
+        {
+            return type switch
+            {
+                MissileType.Basic => new BasicMissile(TextureHelper.MissileTexture, parent),
+                MissileType.Fire => new FireMissile(TextureHelper.MissileTexture, parent),
+                MissileType.Frost => new FrostMissile(TextureHelper.MissileTexture, parent),
+                _ => null,
+            };
         }
     }
 }
