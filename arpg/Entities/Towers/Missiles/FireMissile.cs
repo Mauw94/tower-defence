@@ -6,16 +6,18 @@ namespace towerdef.Entities.Towers.Missiles
 {
     public class FireMissile : Missile
     {
-        public float DamageRadius;
+        public static float DamageRadius = 100;
 
         public FireMissile(Texture2D texture, Sprite parent) : base(texture, parent)
         {
-            ShootInteval = 5f;
-            LinearVelocity = 5f;
+            LinearVelocity = 2.5f;
             Damage = 80;
+            FireRange = 300;
 
             HasSpecialAbility = true;
-            DamageRadius = 30;
+            DamageRadius = 100;
+
+            TargetRandomEnemy();
         }
 
         public override void Update(GameTime gameTime)

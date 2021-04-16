@@ -23,7 +23,7 @@ namespace towerdef.Entities.Enemies
             get
             {
                 return new Rectangle((int)Position.X, (int)Position.Y,
-                    _texture.Width / (int)(Scale * 100), _texture.Height / (int)(Scale * 100));
+                    _texture.Width / (int)(Scale * 120), _texture.Height / (int)(Scale * 120));
             }
         }
 

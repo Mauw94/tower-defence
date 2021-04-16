@@ -5,7 +5,7 @@ namespace towerdef.Entities.Towers
 {
     public class FireTower : Tower
     {
-        public static int Cost = 400;
+        public static int Cost = 300;
 
         public FireTower(Texture2D texture, Vector2 position) : base(texture, position)
         {

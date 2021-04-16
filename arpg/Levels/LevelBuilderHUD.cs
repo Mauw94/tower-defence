@@ -39,11 +39,11 @@ namespace towerdef.Levels
 
         public LevelBuilderHUD()
         {
-            _undoButtonRec = new Rectangle(xPosHud, yPosHud + _basicTowerSelectBox.Height, TextureHelper.UndoButtonTexture.Width, TextureHelper.UndoButtonTexture.Height);
-
             // todo: textures not correct.
             _basicTowerSelectBox = new Rectangle(xPosHud, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
             _fireTowerSelectBox = new Rectangle(xPosHud + _basicTowerSelectBox.Width, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
+
+            _undoButtonRec = new Rectangle(xPosHud, yPosHud + _basicTowerSelectBox.Height, TextureHelper.UndoButtonTexture.Width, TextureHelper.UndoButtonTexture.Height);
 
             _basicTowerExample = new Sprite(TextureHelper.BasicTowerTexture);
             _basicTowerExample.Position = new Vector2(
@@ -67,6 +67,11 @@ namespace towerdef.Levels
                 && _previouseMouseState.LeftButton == ButtonState.Released
                 && _undoButtonRec.Contains(_currentMouseState.Position))
             {
+                EventMessageQueue.Add(new QueueMessage()
+                {
+                    DisplayTime = 1.5f,
+                    Message = "Removed tower"
+                });
                 BuildManager.RemoveLastBuiltTower();
             }
 

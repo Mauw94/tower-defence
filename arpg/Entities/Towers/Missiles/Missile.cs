@@ -10,8 +10,8 @@ namespace towerdef.Entities.Towers.Missiles
 {
     public abstract class Missile : Sprite
     {
-        public static float ShootInteval = 2f;
         public static int Damage { get; protected set; }
+        public int FireRange { get; protected set; }
         public bool HasSpecialAbility { get; protected set; }
 
         private Enemy _enemyToTarget;
@@ -22,8 +22,6 @@ namespace towerdef.Entities.Towers.Missiles
         public Missile(Texture2D texture, Sprite parent) : base(texture)
         {
             Parent = parent;
-
-            TargetRandomEnemy();
         }
 
         public override void Update(GameTime gameTime)
@@ -54,12 +52,12 @@ namespace towerdef.Entities.Towers.Missiles
                 base.Draw(gameTime, spriteBatch);
         }
 
-        void TargetRandomEnemy()
+        public void TargetRandomEnemy()
         {
             List<Enemy> enemiesInRange = new List<Enemy>();
             foreach (var enemy in EnemyManager.Enemies)
             {
-                if (Level.EnemyInShootingDistance(enemy, this.Parent))
+                if (Level.EnemyInShootingDistance(enemy, this))
                     enemiesInRange.Add(enemy);
             }
 

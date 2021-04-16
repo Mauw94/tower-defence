@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using towerdef.Entities.Towers.Missiles;
 using towerdef.Sprites;
 
 namespace towerdef.Helpers
@@ -18,10 +19,10 @@ namespace towerdef.Helpers
         public static int WaveKillCounter { get; set; }
         public static int WaveCounter = 1;
 
-        public static bool EnemyInShootingDistance(Sprite enemy, Sprite tower)
+        public static bool EnemyInShootingDistance(Sprite enemy, Missile missile)
         {
-            var distance = Vector2.Distance(enemy.Position, tower.Position);
-            if (distance <= 350)
+            var distance = Vector2.Distance(enemy.Position, missile.Parent.Position);
+            if (distance <= missile.FireRange)
                 return true;
 
             return false;

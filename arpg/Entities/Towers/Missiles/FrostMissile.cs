@@ -8,7 +8,6 @@ namespace towerdef.Entities.Towers.Missiles
     {
         public FrostMissile(Texture2D texture, Sprite parent) : base(texture, parent)
         {
-            ShootInteval = 3f;
             LinearVelocity = 5f;
             Damage = 60;
 

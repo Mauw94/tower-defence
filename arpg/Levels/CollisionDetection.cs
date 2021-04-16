@@ -23,9 +23,8 @@ namespace towerdef.Levels
                         {
                             if (missile is FireMissile)
                             {
-                                // todo: hit enemies in radius, do less dmg to aoe targets
                                 ExplosionManager.Add(new Explosion(missile.Position, missile.Origin, 9));
-                                EnemyManager.AoeHit(enemy, FireMissile.Damage);
+                                EnemyManager.AoeHit(enemy, Missile.Damage);
                             }
                         } 
                         else

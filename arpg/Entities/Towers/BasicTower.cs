@@ -6,7 +6,7 @@ namespace arpg.Entities.Towers
 {
     public class BasicTower : Tower
     {
-        public static int Cost = 200;
+        public static int Cost = 150;
 
         public BasicTower(Texture2D texture, Vector2 position) : base(texture, position)
         {

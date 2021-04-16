@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using towerdef.Entities.Enemies;
+using towerdef.Entities.Towers.Missiles;
 using towerdef.Helpers;
 
 namespace towerdef.Managers
@@ -59,7 +60,6 @@ namespace towerdef.Managers
 
         public static void AoeHit(Enemy enemy, int damage)
         {
-            var radius = 100;
             var enemiesInRadius = new List<Enemy>();
 
             foreach (var e in Enemies)
@@ -68,7 +68,7 @@ namespace towerdef.Managers
                     continue;
 
                 var distance = Vector2.Distance(enemy.Position, e.Position);
-                if (distance < radius)
+                if (distance < FireMissile.DamageRadius)
                 {
                     enemiesInRadius.Add(e);
                 }

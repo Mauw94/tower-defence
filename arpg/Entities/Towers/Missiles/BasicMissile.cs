@@ -8,9 +8,11 @@ namespace towerdef.Entities.Towers.Missiles
     {
         public BasicMissile(Texture2D texture, Sprite parent) : base(texture, parent)
         {
-            ShootInteval = 2f;
             LinearVelocity = 5f;
             Damage = 50;
+            FireRange = 500;
+
+            TargetRandomEnemy();
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
