@@ -37,7 +37,7 @@ namespace towerdef.Entities.Enemies
         {
             Scale = 0.1f;
 
-            _animation = new Animation(animationTextures);
+            _animation = new Animation(animationTextures, true);
             _animationManager = new AnimationManager(_animation);
             _animationManager.Play(_animation);
 

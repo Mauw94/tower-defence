@@ -11,11 +11,11 @@ namespace towerdef.Models
         public bool IsLooping { get; set; }
         public List<Texture2D> Textures{ get; set; }
 
-        public Animation(List<Texture2D> textures)
+        public Animation(List<Texture2D> textures, bool isLooping)
         {
             Textures = textures;
             FrameCount = textures.Count;
-            IsLooping = true;
+            IsLooping = isLooping;
             FrameSpeed = 0.05f;
         }
     }

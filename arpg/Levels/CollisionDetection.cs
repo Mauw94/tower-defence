@@ -1,5 +1,5 @@
-﻿using System;
-using towerdef.Entities.Towers.Missiles;
+﻿using towerdef.Entities.Towers.Missiles;
+using towerdef.Entities.Towers.Missiles.Explosions;
 using towerdef.Managers;
 
 namespace towerdef.Levels
@@ -22,10 +22,17 @@ namespace towerdef.Levels
                         if (missile.HasSpecialAbility)
                         {
                             if (missile is FireMissile)
-                                Console.WriteLine("do special things");
+                            {
+                                // todo: hit enemies in radius, do less dmg to aoe targets
+                                ExplosionManager.Add(new Explosion(missile.Position, missile.Origin, 9));
+                                EnemyManager.AoeHit(enemy, FireMissile.Damage);
+                            }
+                        } 
+                        else
+                        {
+                            EnemyManager.Hit(enemy, Missile.Damage);
                         }
                         MissileManager.Remove(missile);
-                        EnemyManager.Hit(enemy, Missile.Damage);
                     }
                 }
             }

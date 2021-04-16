@@ -10,8 +10,8 @@ namespace towerdef.Helpers.EventQueue
 
         private float _timer;
         private string _message = string.Empty;
-        private QueueMessage _currentMessage;
         private bool _noMessagesToShow = true;
+        private QueueMessage _currentMessage;
 
         public EventMessageQueue()
         {

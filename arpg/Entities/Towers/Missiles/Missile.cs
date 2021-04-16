@@ -10,8 +10,8 @@ namespace towerdef.Entities.Towers.Missiles
 {
     public abstract class Missile : Sprite
     {
-        public static int Damage { get; protected set; }
         public static float ShootInteval = 2f;
+        public static int Damage { get; protected set; }
         public bool HasSpecialAbility { get; protected set; }
 
         private Enemy _enemyToTarget;

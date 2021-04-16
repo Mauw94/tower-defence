@@ -7,7 +7,7 @@ namespace towerdef.Helpers
     {
         public class Level1
         {
-            public static float EnemySpawnTimer = 3.5f;
+            public static float EnemySpawnTimer = 2.5f;
             public static int WaveOneMaxSkeletons = 10;
             public static int AmountOfWaves = 2;
             public static int TowerHealth = 50;

@@ -13,6 +13,8 @@ namespace towerdef.Managers
 
         public Animation Animation;
 
+        public bool PlayedOnce { get; set; }
+
         public AnimationManager(Animation animation)
         {
             Animation = animation;
@@ -57,7 +59,10 @@ namespace towerdef.Managers
                 Animation.CurrentFrame++;
 
                 if (Animation.CurrentFrame >= Animation.FrameCount)
+                {
+                    PlayedOnce = true;
                     Animation.CurrentFrame = 0;
+                }
             }
         }
     }

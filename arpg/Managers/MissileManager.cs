@@ -38,7 +38,7 @@ namespace towerdef.Managers
             return type switch
             {
                 MissileType.Basic => new BasicMissile(TextureHelper.MissileTexture, parent),
-                MissileType.Fire => new FireMissile(TextureHelper.MissileTexture, parent),
+                MissileType.Fire => new FireMissile(TextureHelper.FireMissileTexture, parent),
                 MissileType.Frost => new FrostMissile(TextureHelper.MissileTexture, parent),
                 _ => null,
             };

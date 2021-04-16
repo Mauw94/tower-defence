@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using towerdef.Entities;
 using towerdef.Entities.Enemies;
 using towerdef.Helpers;
 
@@ -55,6 +54,38 @@ namespace towerdef.Managers
         public static void Hit(Enemy enemy, int damage)
         {
             enemy.HealthPoints -= damage;
+            CheckEnemyAlive(enemy);
+        }
+
+        public static void AoeHit(Enemy enemy, int damage)
+        {
+            var radius = 100;
+            var enemiesInRadius = new List<Enemy>();
+
+            foreach (var e in Enemies)
+            {
+                if (e == enemy)
+                    continue;
+
+                var distance = Vector2.Distance(enemy.Position, e.Position);
+                if (distance < radius)
+                {
+                    enemiesInRadius.Add(e);
+                }
+            }
+
+            foreach (var e in enemiesInRadius)
+            {
+                e.HealthPoints -= (int)(damage * 0.7);
+                CheckEnemyAlive(e);
+            }
+
+            enemy.HealthPoints -= damage;
+            CheckEnemyAlive(enemy);
+        }
+
+        static void CheckEnemyAlive(Enemy enemy)
+        {
             if (!enemy.IsAlive())
             {
                 Remove(enemy);

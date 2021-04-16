@@ -10,7 +10,7 @@ namespace towerdef.Entities.Towers.Missiles
 
         public FireMissile(Texture2D texture, Sprite parent) : base(texture, parent)
         {
-            ShootInteval = 3f;
+            ShootInteval = 5f;
             LinearVelocity = 5f;
             Damage = 80;
 

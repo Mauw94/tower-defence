@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using towerdef.Entities.Towers.Missiles.Explosions;
 using towerdef.Helpers;
 using towerdef.Helpers.EventQueue;
 using towerdef.Levels;
@@ -16,18 +17,21 @@ namespace towerdef.GameStates
         private Texture2D _basicTowerTexture;
         private Texture2D _fireTowerTexture;
         private Texture2D _missileTexture;
+        private Texture2D _fireMissileTexture;
         private Texture2D _hudTexture;
         private Texture2D _undoButton;
         private Texture2D _healthTexture;
 
         private List<Texture2D> _enemy1WalkingTextures;
         private List<Texture2D> _enemy2WalkingTextures;
+        private List<Texture2D> _explosionTextures;
 
         private SpriteFont _font;
 
         private EnemyManager _enemyManager;
         private MissileManager _missileManager;
         private BuildManager _buildManager;
+        private ExplosionManager _explosionManager;
 
         private LevelBuilderHUD _builderHud;
         private CollisionDetection _collisionDetection;
@@ -46,6 +50,7 @@ namespace towerdef.GameStates
             _basicTowerTexture = _content.Load<Texture2D>("tower1");
             _fireTowerTexture = _content.Load<Texture2D>("firetower");
             _missileTexture = _content.Load<Texture2D>("missile");
+            _fireMissileTexture = _content.Load<Texture2D>("firemissile");
             _hudTexture = _content.Load<Texture2D>("builderhud");
             _undoButton = _content.Load<Texture2D>("undo");
             _healthTexture = _content.Load<Texture2D>("health");
@@ -93,6 +98,16 @@ namespace towerdef.GameStates
                 _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_016"),
                 _content.Load<Texture2D>("Golem_02_Walking/Golem_02_Walking_017")
             };
+            _explosionTextures = new List<Texture2D>
+            {
+                _content.Load<Texture2D>("Explosion/explosion_1"),
+                _content.Load<Texture2D>("Explosion/explosion_2"),
+                _content.Load<Texture2D>("Explosion/explosion_3"),
+                _content.Load<Texture2D>("Explosion/explosion_4"),
+                _content.Load<Texture2D>("Explosion/explosion_5"),
+                _content.Load<Texture2D>("Explosion/explosion_6"),
+                _content.Load<Texture2D>("Explosion/explosion_7"),
+            };
 
             // load fonts.
             _font = _content.Load<SpriteFont>("game");
@@ -104,15 +119,18 @@ namespace towerdef.GameStates
             TextureHelper.HudTexture = _hudTexture;
             TextureHelper.UndoButtonTexture = _undoButton;
             TextureHelper.MissileTexture = _missileTexture;
+            TextureHelper.FireMissileTexture = _fireMissileTexture;
 
             // animation textures
             TextureHelper.Enemy1WalkingTextures = _enemy1WalkingTextures;
             TextureHelper.Enemy2WalkingTextures = _enemy2WalkingTextures;
+            TextureHelper.ExplosionTextures = _explosionTextures;
 
             // initialize managers.
             _enemyManager = new EnemyManager();
             _missileManager = new MissileManager();
             _buildManager = new BuildManager();
+            _explosionManager = new ExplosionManager();
 
             // initialize helpers
             _builderHud = new LevelBuilderHUD();
@@ -146,6 +164,9 @@ namespace towerdef.GameStates
 
                 foreach (var missile in MissileManager.Missiles.ToArray())
                     missile.Update(gameTime);
+
+                foreach (var explosion in ExplosionManager.Explosions.ToArray())
+                    explosion.Update(gameTime);
 
                 _collisionDetection.DetectCollision();
                 _enemyManager.PeriodicallySpawnEnemy(gameTime);
@@ -191,6 +212,9 @@ namespace towerdef.GameStates
                 
                 foreach (var missiles in MissileManager.Missiles.ToArray())
                     missiles.Draw(gameTime, spriteBatch);
+
+                foreach (var explosion in ExplosionManager.Explosions.ToArray())
+                    explosion.Draw(gameTime, spriteBatch);
             } 
             else
             {
