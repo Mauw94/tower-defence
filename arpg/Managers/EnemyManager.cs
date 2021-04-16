@@ -32,7 +32,7 @@ namespace towerdef.Managers
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
             if (_timer > Level.Level1.EnemySpawnTimer 
-                && _spawnedEnemies <= Level.Level1.WaveOneMaxSkeletons)
+                && _spawnedEnemies <= Level.Level1.EnemiesToSpawn)
             {
                 _timer = 0f;
                 _spawnedEnemies++;

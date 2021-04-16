@@ -191,11 +191,11 @@ namespace towerdef.GameStates
 
             // todo: move to separate class -> DrawHudClass?
             // draw gold.
-            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.GoldAvailable.ToString(), new Vector2(15, 10), Color.Black);
+            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.Gold.ToString(), new Vector2(15, 10), Color.Black);
 
             // draw wave counter.
             spriteBatch.DrawString(_font, "Wave: " + Level.WaveCounter + "/"
-                + Level.Level1.AmountOfWaves, new Vector2(100, 10), Color.Black);
+                + Level.Level1.Waves, new Vector2(100, 10), Color.Black);
 
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())

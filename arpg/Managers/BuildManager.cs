@@ -25,12 +25,12 @@ namespace towerdef.Managers
             return tower;
         }
 
-        public static void RemoveLastBuiltTower()
+        public static void RemoveLastBuiltTower(int goldRefund)
         {
             if (Towers.Count > 0)
             {
                 Towers.Remove(Towers.Last());
-                Level.AddGold(BasicTower.Cost);
+                Level.AddGold(goldRefund);
             }
         }
 

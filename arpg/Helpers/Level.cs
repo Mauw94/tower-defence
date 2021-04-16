@@ -9,10 +9,10 @@ namespace towerdef.Helpers
         public class Level1
         {
             public static float EnemySpawnTimer = 2.5f;
-            public static int WaveOneMaxSkeletons = 10;
-            public static int AmountOfWaves = 2;
-            public static int TowerHealth = 50;
-            public static int GoldAvailable = 500;
+            public static int EnemiesToSpawn = 10;
+            public static int Waves = 2;
+            public static int Health = 50;
+            public static int Gold = 500;
         }
         
         public static bool WaveEnd { get; set; }
@@ -31,7 +31,7 @@ namespace towerdef.Helpers
         public static void IncreaseWaveKillCount()
         {
             WaveKillCounter++;
-            if (WaveKillCounter >= Level1.WaveOneMaxSkeletons)
+            if (WaveKillCounter >= Level1.EnemiesToSpawn)
             {
                 WaveEnd = true;
                 WaveCounter++;
@@ -40,9 +40,9 @@ namespace towerdef.Helpers
 
         public static bool Buy(int cost)
         {
-            if (Level1.GoldAvailable >= cost)
+            if (Level1.Gold >= cost)
             {
-                Level1.GoldAvailable -= cost;
+                Level1.Gold -= cost;
                 return true;
             }
             return false;
@@ -50,7 +50,7 @@ namespace towerdef.Helpers
 
         public static void AddGold(int gold)
         {
-            Level1.GoldAvailable += gold;
+            Level1.Gold += gold;
         }
 
         public static void Reset()

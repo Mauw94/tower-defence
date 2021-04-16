@@ -72,7 +72,7 @@ namespace towerdef.Levels
                     DisplayTime = 1.5f,
                     Message = "Removed tower"
                 });
-                BuildManager.RemoveLastBuiltTower();
+                BuildManager.RemoveLastBuiltTower(GetTowerCostFromType(_towerType));
             }
 
             if (!_dragging)
