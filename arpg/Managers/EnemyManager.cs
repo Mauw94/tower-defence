@@ -31,13 +31,10 @@ namespace towerdef.Managers
         {
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (_timer > Level.Level1.EnemySpawnTimer 
-                && _spawnedEnemies <= Level.Level1.EnemiesToSpawn)
-            {
-                _timer = 0f;
-                _spawnedEnemies++;
-                GenerateGolem();
-            }
+            if (!(_timer > Level.Level1.EnemySpawnTimer) || _spawnedEnemies > Level.Level1.EnemiesToSpawn) return;
+            _timer = 0f;
+            _spawnedEnemies++;
+            GenerateGolem();
         }
 
         public void Reset()
@@ -86,12 +83,10 @@ namespace towerdef.Managers
 
         static void CheckEnemyAlive(Enemy enemy)
         {
-            if (!enemy.IsAlive())
-            {
-                Remove(enemy);
-                Level.IncreaseWaveKillCount();
-                Level.AddGold(enemy.DropsGold);
-            }
+            if (enemy.IsAlive()) return;
+            Remove(enemy);
+            Level.IncreaseWaveKillCount();
+            Level.AddGold(enemy.DropsGold);
         }
     }
 }

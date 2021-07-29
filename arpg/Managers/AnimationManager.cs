@@ -13,7 +13,7 @@ namespace towerdef.Managers
 
         public Animation Animation;
 
-        public bool PlayedOnce { get; set; }
+        public bool PlayedOnce { get; private set; }
 
         public AnimationManager(Animation animation)
         {
@@ -53,17 +53,13 @@ namespace towerdef.Managers
         {
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (_timer > Animation.FrameSpeed)
-            {
-                _timer = 0f;
-                Animation.CurrentFrame++;
+            if (!(_timer > Animation.FrameSpeed)) return;
+            _timer = 0f;
+            Animation.CurrentFrame++;
 
-                if (Animation.CurrentFrame >= Animation.FrameCount)
-                {
-                    PlayedOnce = true;
-                    Animation.CurrentFrame = 0;
-                }
-            }
+            if (Animation.CurrentFrame < Animation.FrameCount) return;
+            PlayedOnce = true;
+            Animation.CurrentFrame = 0;
         }
     }
 }

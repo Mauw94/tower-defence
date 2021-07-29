@@ -22,10 +22,7 @@ namespace towerdef.Helpers
         public static bool EnemyInShootingDistance(Sprite enemy, Missile missile)
         {
             var distance = Vector2.Distance(enemy.Position, missile.Parent.Position);
-            if (distance <= missile.FireRange)
-                return true;
-
-            return false;
+            return distance <= missile.FireRange;
         }
 
         public static void IncreaseWaveKillCount()

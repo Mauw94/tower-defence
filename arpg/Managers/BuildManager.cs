@@ -27,11 +27,9 @@ namespace towerdef.Managers
 
         public static void RemoveLastBuiltTower(int goldRefund)
         {
-            if (Towers.Count > 0)
-            {
-                Towers.Remove(Towers.Last());
-                Level.AddGold(goldRefund);
-            }
+            if (Towers.Count <= 0) return;
+            Towers.Remove(Towers.Last());
+            Level.AddGold(goldRefund);
         }
 
         static Tower CreateTowerFromType(TowerType type, Texture2D texture, Vector2 position)
