@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using towerdef.Sprites;
+using towerdef.Main;
 
 namespace towerdef.GameStates
 {
@@ -12,10 +13,9 @@ namespace towerdef.GameStates
     {
         private List<Component> _components;
 
-        public MenuState(Game1 game, ContentManager content)
-            : base(game, content)
+        public MenuState(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider)
+            : base(game, content, sessionStorageProvider)
         {
-
         }
 
         public override void LoadContent()
@@ -63,12 +63,12 @@ namespace towerdef.GameStates
 
         private void Button_LevelPicker_Clicked(object sender, EventArgs e)
         {
-            _game.ChangeState(new LevelPickerState(_game, _content));
+            _game.ChangeState(new LevelPickerState(_game, _content, _sessionStorageProvider));
         }
 
         private void Button_Play_Clicked(object sender, EventArgs args)
         {
-            _game.ChangeState(new Level1State(_game, _content));
+            _game.ChangeState(new Level1State(_game, _content, _sessionStorageProvider));
         }
 
         private void Button_Settings_Clicked(object sender, EventArgs e)

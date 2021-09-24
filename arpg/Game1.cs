@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using towerdef.GameStates;
+using towerdef.Main;
 
 namespace towerdef
 {
@@ -16,8 +17,12 @@ namespace towerdef
         public static int ScreenWidth = 1280;
         public static int ScreenHeight = 720;
 
+        // todo: fix
+        public static string GameKey;
+
         private State _currentState;
         private State _nextState;
+        private SessionStorageProvider _sessionStorageProvider;
 
         public Game1()
         {
@@ -35,6 +40,10 @@ namespace towerdef
 
             IsMouseVisible = true;
 
+            GameKey = Guid.NewGuid().ToString();
+            _sessionStorageProvider = new SessionStorageProvider();
+            _sessionStorageProvider.CreateNewSession(GameKey);
+
             base.Initialize();
         }
 
@@ -42,7 +51,7 @@ namespace towerdef
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _currentState = new MenuState(this, Content);
+            _currentState = new MenuState(this, Content, _sessionStorageProvider);
             _currentState.LoadContent();
             _nextState = null;
         }

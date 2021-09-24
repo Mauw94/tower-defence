@@ -2,12 +2,14 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using towerdef.Main;
 
 namespace towerdef.GameStates
 {
     public class LevelPickerState : State
     {
-        public LevelPickerState(Game1 game, ContentManager content) : base(game, content)
+        public LevelPickerState(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
+            : base(game, content, sessionStorageProvider)
         {
         }
 

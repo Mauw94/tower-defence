@@ -7,6 +7,7 @@ using towerdef.Entities.Towers.Missiles.Explosions;
 using towerdef.Helpers;
 using towerdef.Helpers.EventQueue;
 using towerdef.Levels;
+using towerdef.Main;
 using towerdef.Managers;
 
 namespace towerdef.GameStates
@@ -39,7 +40,8 @@ namespace towerdef.GameStates
 
         private bool _levelStarted = false;
 
-        public Level1State(Game1 game, ContentManager content) : base(game, content)
+        public Level1State(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
+            : base(game, content, sessionStorageProvider)
         {
         }
 
@@ -137,6 +139,9 @@ namespace towerdef.GameStates
             _collisionDetection = new CollisionDetection();
             _eventMessageQueue = new EventMessageQueue();
 
+            var storage = _sessionStorageProvider.GetFromSessionStorage(Game1.GameKey);
+            storage.GoldEarned = Level.Level1.Gold;
+
             Init();
         }
 
@@ -191,11 +196,18 @@ namespace towerdef.GameStates
 
             // todo: move to separate class -> DrawHudClass?
             // draw gold.
-            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.Gold.ToString(), new Vector2(15, 10), Color.Black);
+            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.Gold.ToString(), 
+                new Vector2(15, 10), Color.Black);
 
             // draw wave counter.
             spriteBatch.DrawString(_font, "Wave: " + Level.WaveCounter + "/"
                 + Level.Level1.Waves, new Vector2(100, 10), Color.Black);
+
+            // DEBUG STRINGS.
+            spriteBatch.DrawString(_font, "Towers: " + BuildManager.Towers.Count,
+                new Vector2(200, 10), Color.Black);
+            spriteBatch.DrawString(_font, "Enemies " + EnemyManager.Enemies.Count,
+                new Vector2(300, 10), Color.Black); 
 
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())
