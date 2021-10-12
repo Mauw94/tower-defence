@@ -2,36 +2,44 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 using towerdef.GameStates;
 using towerdef.Main;
 
 namespace towerdef
 {
-    public class Game1 : Game
+    public class TowerDefence : Game
     {
-        public GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
-
+        public static AppState AppState;
         public static Random Random;
 
         public static int ScreenWidth = 1280;
         public static int ScreenHeight = 720;
 
-        // todo: fix
+        // todo: fix -> cant be accessible like this
         public static string GameKey;
+
+        public GraphicsDeviceManager graphics;
+        public SpriteBatch spriteBatch;
 
         private State _currentState;
         private State _nextState;
         private SessionStorageProvider _sessionStorageProvider;
+        private ServiceBus _serviceBus;
 
-        public Game1()
+        public TowerDefence()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            AppState = AppState.NotRunning;
+            _serviceBus = new ServiceBus();
+            _serviceBus.AddMessage("Towerdefence is " + AppState.ToString());
         }
 
         protected override void Initialize()
         {
+            AppState = AppState.Running;
             Random = new Random();
             
             graphics.PreferredBackBufferWidth = ScreenWidth;
@@ -43,6 +51,7 @@ namespace towerdef
             GameKey = Guid.NewGuid().ToString();
             _sessionStorageProvider = new SessionStorageProvider();
             _sessionStorageProvider.CreateNewSession(GameKey);
+            _serviceBus.AddMessage("Towerdefence is " + AppState.ToString());
 
             base.Initialize();
         }
@@ -93,6 +102,11 @@ namespace towerdef
         public void ChangeState(State state)
         {
             _nextState = state;
+        }
+
+        public static string GetMessage()
+        {
+            return null;
         }
     }
 }

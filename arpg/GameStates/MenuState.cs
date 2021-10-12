@@ -13,7 +13,7 @@ namespace towerdef.GameStates
     {
         private List<Component> _components;
 
-        public MenuState(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider)
+        public MenuState(TowerDefence game, ContentManager content, SessionStorageProvider sessionStorageProvider)
             : base(game, content, sessionStorageProvider)
         {
         }
@@ -28,33 +28,33 @@ namespace towerdef.GameStates
                 new Sprite(_content.Load<Texture2D>("bg"))
                 {
                     Layer = 0f,
-                    Position = new Vector2(Game1.ScreenWidth / 2, Game1.ScreenHeight / 2)
+                    Position = new Vector2(TowerDefence.ScreenWidth / 2, TowerDefence.ScreenHeight / 2)
                 },
                 new Button(buttonTexture, buttonFont)
                 {
                     Text = "Play",
-                    Position = new Vector2(Game1.ScreenWidth / 2, 400),
+                    Position = new Vector2(TowerDefence.ScreenWidth / 2, 400),
                     Click = new EventHandler(Button_Play_Clicked),
                     Layer = 0.1f
                 },
                 new Button(buttonTexture, buttonFont)
                 {
                     Text = "Choose level",
-                    Position = new Vector2(Game1.ScreenWidth / 2, 440),
+                    Position = new Vector2(TowerDefence.ScreenWidth / 2, 440),
                     Click = new EventHandler(Button_LevelPicker_Clicked),
                     Layer = 0.1f
                 },
                 new Button(buttonTexture, buttonFont)
                 {
                     Text = "Settings",
-                    Position = new Vector2(Game1.ScreenWidth / 2, 480),
+                    Position = new Vector2(TowerDefence.ScreenWidth / 2, 480),
                     Click = new EventHandler(Button_Settings_Clicked),
                     Layer = 0.1f
                 },
                 new Button(buttonTexture, buttonFont)
                 {
                     Text = "Quit",
-                    Position = new Vector2(Game1.ScreenWidth / 2, 520),
+                    Position = new Vector2(TowerDefence.ScreenWidth / 2, 520),
                     Click = new EventHandler(Button_Quit_Clicked),
                     Layer = 0.1f
                 },

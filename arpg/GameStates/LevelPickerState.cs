@@ -8,7 +8,7 @@ namespace towerdef.GameStates
 {
     public class LevelPickerState : State
     {
-        public LevelPickerState(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
+        public LevelPickerState(TowerDefence game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
             : base(game, content, sessionStorageProvider)
         {
         }

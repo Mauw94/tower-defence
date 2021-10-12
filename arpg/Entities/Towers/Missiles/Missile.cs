@@ -61,7 +61,7 @@ namespace towerdef.Entities.Towers.Missiles
                     enemiesInRange.Add(enemy);
             }
 
-            var enemyIndex = Game1.Random.Next(0, enemiesInRange.Count);
+            var enemyIndex = TowerDefence.Random.Next(0, enemiesInRange.Count);
             _enemyToTarget = enemiesInRange.Count > 0 ? enemiesInRange.ToArray()[enemyIndex] : null;
         }
     }

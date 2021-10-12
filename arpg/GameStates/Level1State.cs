@@ -40,7 +40,7 @@ namespace towerdef.GameStates
 
         private bool _levelStarted = false;
 
-        public Level1State(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
+        public Level1State(TowerDefence game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
             : base(game, content, sessionStorageProvider)
         {
         }
@@ -139,7 +139,7 @@ namespace towerdef.GameStates
             _collisionDetection = new CollisionDetection();
             _eventMessageQueue = new EventMessageQueue();
 
-            var storage = _sessionStorageProvider.GetFromSessionStorage(Game1.GameKey);
+            var storage = _sessionStorageProvider.GetFromSessionStorage(TowerDefence.GameKey);
             storage.GoldEarned = Level.Level1.Gold;
 
             Init();

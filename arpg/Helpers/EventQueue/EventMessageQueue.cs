@@ -29,7 +29,7 @@ namespace towerdef.Helpers.EventQueue
                 _message = _currentMessage.Message;
                 _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                spriteBatch.DrawString(font, _message, new Vector2(Game1.ScreenWidth / 2, Game1.ScreenHeight / 2), Color.Black);
+                spriteBatch.DrawString(font, _message, new Vector2(TowerDefence.ScreenWidth / 2, TowerDefence.ScreenHeight / 2), Color.Black);
 
                 if (_timer >= _currentMessage.DisplayTime)
                 {

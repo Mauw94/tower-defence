@@ -7,11 +7,11 @@ namespace towerdef.GameStates
 {
     public abstract class State
     {
-        protected Game1 _game;
+        protected TowerDefence _game;
         protected ContentManager _content;
         protected SessionStorageProvider _sessionStorageProvider;
 
-        public State(Game1 game, ContentManager content, SessionStorageProvider sessionStorageProvider)
+        public State(TowerDefence game, ContentManager content, SessionStorageProvider sessionStorageProvider)
         {
             _game = game;
             _content = content;

@@ -13,13 +13,13 @@ namespace towerdef.Entities.Enemies
             HealthPoints = MaxHealthPoints;
             Damage = 10;
             LinearVelocity = 0.5f;
-            Position = new Vector2(Game1.ScreenWidth, Game1.ScreenHeight / 2);
+            Position = new Vector2(TowerDefence.ScreenWidth, TowerDefence.ScreenHeight / 2);
             DropsGold = 50;
         }
 
         public override void Update(GameTime gameTime)
         {
-            Vector2 direction = new Vector2(0, Game1.ScreenHeight / 2) - Position;
+            Vector2 direction = new Vector2(0, TowerDefence.ScreenHeight / 2) - Position;
             direction.Normalize();
             Position += direction * LinearVelocity;
 
