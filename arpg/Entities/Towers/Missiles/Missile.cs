@@ -15,7 +15,7 @@ namespace towerdef.Entities.Towers.Missiles
         public bool HasSpecialAbility { get; protected set; }
 
         private Enemy _enemyToTarget;
-        // Enemy can do by another missile from another tower before a missile can hit,
+        // Enemy can die by another missile from another tower before a missile can hit,
         // so we need to check again before hit.
         private Enemy _checkIfAliveOrInRange;
 
@@ -28,7 +28,7 @@ namespace towerdef.Entities.Towers.Missiles
         {
             if (_enemyToTarget != null) 
                  _checkIfAliveOrInRange = EnemyManager.Enemies
-                    .Find(e=>e.GetHashCode() == _enemyToTarget.GetHashCode());
+                    .Find(e => e.GetHashCode() == _enemyToTarget.GetHashCode());
             
             if (_checkIfAliveOrInRange == null)
             {
@@ -36,6 +36,7 @@ namespace towerdef.Entities.Towers.Missiles
                 return;
             }
 
+            // todo: refactor 
             if (_enemyToTarget != null)
             {
                 Vector2 direction = _enemyToTarget.Position - Position;
