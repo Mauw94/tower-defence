@@ -29,6 +29,9 @@ namespace towerdef.Entities.Enemies
 
         private Rectangle _healthRec;
 
+        // todo: create animation when dropping gold
+        // todo: make path finding algorithm for first 2 levelsQ
+        // todo: when level 2 => add another enemy to the spawn
         public Enemy(Texture2D texture) : base(texture)
         {
         }
@@ -66,22 +69,22 @@ namespace towerdef.Entities.Enemies
 
             base.Update(gameTime);
         }
-        
+
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             // draw hp bar above enemy.
-            double currentHpPercentage =  HealthPoints / (double) MaxHealthPoints * 100.0;
+            double currentHpPercentage = HealthPoints / (double)MaxHealthPoints * 100.0;
             double hpBar = 50 / 100.0 * currentHpPercentage;
 
             _healthRec = new Rectangle(
-                (int)Position.X - 25, (int)Position.Y - 45, 
-                (int) hpBar, 
+                (int)Position.X - 25, (int)Position.Y - 45,
+                (int)hpBar,
                 10);
             spriteBatch.Draw(TextureHelper.HealthTexture, _healthRec, Color.White);
 
             if (_animationManager != null)
                 _animationManager.Draw(spriteBatch, Origin, Scale);
-            else 
+            else
                 base.Draw(gameTime, spriteBatch);
         }
 
