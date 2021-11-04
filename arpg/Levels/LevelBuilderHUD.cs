@@ -81,7 +81,11 @@ namespace towerdef.Levels
                     && _previouseMouseState.LeftButton == ButtonState.Released
                     && _basicTowerSelectBox.Contains(_currentMouseState.Position))
                 {
-                    Console.WriteLine("creating basic tower");
+                    EventMessageQueue.Add(new QueueMessage()
+                    {
+                        DisplayTime = 1.5f,
+                        Message = "Creating basic tower"
+                    });
                     _dragging = true;
                     _towerType = TowerType.Basic;
                     CreateNewTower(_basicTowerExample);
@@ -90,7 +94,11 @@ namespace towerdef.Levels
                     && _previouseMouseState.LeftButton == ButtonState.Released
                     && _fireTowerSelectBox.Contains(_currentMouseState.Position))
                 {
-                    Console.WriteLine("creating fire tower");
+                    EventMessageQueue.Add(new QueueMessage()
+                    {
+                        DisplayTime = 1.5f,
+                        Message = "Creating fire tower"
+                    });
                     _dragging = true;
                     _towerType = TowerType.Fire;
                     CreateNewTower(_fireTowerExample);

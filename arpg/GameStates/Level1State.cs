@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using towerdef.Entities.Towers.Missiles.Explosions;
 using towerdef.Helpers;
@@ -172,9 +173,14 @@ namespace towerdef.GameStates
 
                 foreach (var explosion in ExplosionManager.Explosions.ToArray())
                     explosion.Update(gameTime);
-
+                
                 _collisionDetection.DetectCollision();
+                _collisionDetection.EnemyReachesEndCheck();
                 _enemyManager.PeriodicallySpawnEnemy(gameTime);
+
+                Console.WriteLine(Level.Level1.Health);
+                if (Level.Level1.Health <= 0)
+                    _levelStarted = false;
             } 
             else
             {
@@ -207,7 +213,11 @@ namespace towerdef.GameStates
             spriteBatch.DrawString(_font, "Towers: " + BuildManager.Towers.Count,
                 new Vector2(200, 10), Color.Black);
             spriteBatch.DrawString(_font, "Enemies " + EnemyManager.Enemies.Count,
-                new Vector2(300, 10), Color.Black); 
+                new Vector2(300, 10), Color.Black);
+
+            // Draw current main game health.
+            spriteBatch.DrawString(_font, "Health: " + Level.Level1.Health,
+                new Vector2(400, 10), Color.Black);
 
             // draw towers that were placed before round start.
             foreach (var build in BuildManager.Towers.ToArray())

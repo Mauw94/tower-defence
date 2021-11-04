@@ -9,10 +9,11 @@ namespace towerdef.Helpers
         public class Level1
         {
             public static float EnemySpawnTimer = 2.5f;
-            public static int EnemiesToSpawn = 10;
-            public static int Waves = 2;
-            public static int Health = 50;
+            public static int EnemiesToSpawn = 5;
+            public static int Waves = 1;
+            public static int Health = 150;
             public static int Gold = 500;
+            public static bool GameOver = false;
         }
         
         public static bool WaveEnd { get; set; }
