@@ -15,6 +15,8 @@ namespace towerdef.Managers
 
         public bool PlayedOnce { get; private set; }
 
+        private bool _playing = true;
+
         public AnimationManager(Animation animation)
         {
             Animation = animation;
@@ -47,10 +49,14 @@ namespace towerdef.Managers
         {
             Animation.CurrentFrame = 0;
             _timer = 0f;
+            _playing = false;
         }
 
         public void Update(GameTime gameTime)
         {
+            if (!_playing)
+                return;
+
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
             if (!(_timer > Animation.FrameSpeed)) return;

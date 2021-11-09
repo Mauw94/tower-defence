@@ -9,7 +9,11 @@ namespace towerdef.Entities.Enemies
     {
         private Pathfinding _pathfinding { get; set; }
         private int counter = 0;
+        private float distance;
         private CoordinatePoint[] coordinatesArray;
+        private bool moving = false;
+        private Vector2 startPos;
+        private Vector2 nextPoint;
 
         public Golem1(List<Texture2D> animationTextures, Pathfinding pathfinding)
             : base(animationTextures)
@@ -21,30 +25,43 @@ namespace towerdef.Entities.Enemies
             Position = new Vector2(TowerDefence.ScreenWidth, TowerDefence.ScreenHeight / 2);
             DropsGold = 50;
 
+            startPos = Position;
+
             _pathfinding = pathfinding;
             coordinatesArray = new CoordinatePoint[_pathfinding.CoordinatesLevel1.Count - 1];
             coordinatesArray = _pathfinding.CoordinatesLevel1.ToArray();
+                        
+            nextPoint = GetNextCoordinate();
         }
 
         public override void Update(GameTime gameTime)
         {
-            // Vector2 direction = new Vector2(0, TowerDefence.ScreenHeight / 2) - Position;
-            // direction.Normalize();
-            // Position += direction * LinearVelocity;
-
-            Vector2 nextPoint = GetNextCoordinate();
-            float distance = Vector2.Distance(Position, nextPoint); 
-            nextPoint.Normalize();
-            Position += nextPoint * LinearVelocity;
-
+            // todo: move logic.
+            if (moving)
+            {                    
+                nextPoint.Normalize();
+                Position += nextPoint * LinearVelocity;
+                var newDistance = Vector2.Distance(startPos, Position);
+                Console.WriteLine(newDistance);
+                if (Vector2.Distance(startPos, Position) >= distance)
+                {
+                    Console.WriteLine("point reached");
+                    moving = false;
+                    _animationManager.Stop();
+                }
+            }
             base.Update(gameTime);
         }
 
         private Vector2 GetNextCoordinate()
         {
-            var nextPoint = coordinatesArray[counter];
+            var nextCoordinate = coordinatesArray[counter];
+            distance = Vector2.Distance(Position, PositiveCoordinate(nextCoordinate.Point));
+            moving = true;
+            Console.WriteLine("###########");
+            Console.WriteLine(distance);
 
-            return nextPoint.Point;
+            return nextCoordinate.Point;
         }
 
         private Vector2 PositiveCoordinate(Vector2 point)
