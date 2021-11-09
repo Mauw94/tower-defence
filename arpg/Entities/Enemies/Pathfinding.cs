@@ -19,7 +19,7 @@ namespace towerdef.Entities.Enemies
 
             CoordinatesLevel1.Add(
                 new CoordinatePoint(
-                    new Vector2(-1800, -500)));
+                    new Vector2(-200, 500)));
         }
 
         public Vector2 GetNextPoint()
@@ -27,7 +27,7 @@ namespace towerdef.Entities.Enemies
             var coordinatePoints = CoordinatesLevel1.ToArray();
             var nextCoordinate = coordinatePoints[internalCounter].Point;
             internalCounter++;
-            
+
             Console.WriteLine("##NEXT COORDINATE##");
             Console.WriteLine(nextCoordinate);
 

@@ -25,10 +25,6 @@ namespace towerdef.Entities.Enemies
 
             _startPos = Position;
             _pathfinding = pathfinding;
-            _nextCoordinateToGoTo = _pathfinding.GetNextPoint();
-            _moving = true;
-            _distance = Vector2.Distance(
-                Position, _pathfinding.MakeCoordinatePositive(_nextCoordinateToGoTo));
         }
 
         public override void Update(GameTime gameTime)
@@ -44,9 +40,22 @@ namespace towerdef.Entities.Enemies
                     _animationManager.Stop();
                 }
             }
+            else
+            {
+                NextCoordinate();
+            }
+
             base.Update(gameTime);
         }
 
+        private void NextCoordinate()
+        {
+            _nextCoordinateToGoTo = _pathfinding.GetNextPoint();
+            _startPos = Position;
+            _distance = Vector2.Distance(Position, _pathfinding.MakeCoordinatePositive(_nextCoordinateToGoTo));
+            _moving = true;
+            _animationManager.Play();
+        }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             base.Draw(gameTime, spriteBatch);
