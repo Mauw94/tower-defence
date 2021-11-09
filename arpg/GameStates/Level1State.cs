@@ -49,7 +49,7 @@ namespace towerdef.GameStates
         public override void LoadContent()
         {
             // load textures.
-            _gameMap = _content.Load<Texture2D>("level1");
+            _gameMap = _content.Load<Texture2D>("bg");
             _basicTowerTexture = _content.Load<Texture2D>("tower1");
             _fireTowerTexture = _content.Load<Texture2D>("firetower");
             _missileTexture = _content.Load<Texture2D>("missile");
@@ -178,7 +178,6 @@ namespace towerdef.GameStates
                 _collisionDetection.EnemyReachesEndCheck();
                 _enemyManager.PeriodicallySpawnEnemy(gameTime);
 
-                Console.WriteLine(Level.Level1.Health);
                 if (Level.Level1.Health <= 0)
                     _levelStarted = false;
             } 

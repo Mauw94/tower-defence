@@ -44,12 +44,12 @@ namespace towerdef.Levels
         {
             foreach (var enemy in EnemyManager.Enemies.ToArray())
             {
-                if (enemy.Position.X <= 0)
-                {
-                    Console.WriteLine("Enemy reached the end");
-                    enemy.IsRemoved = true;
-                    Level.Level1.Health -= 50;
-                }
+                // if (enemy.Position.X <= 0)
+                // {
+                //     Console.WriteLine("Enemy reached the end");
+                //     enemy.IsRemoved = true;
+                //     Level.Level1.Health -= 50;
+                // }
             }
         }
     }

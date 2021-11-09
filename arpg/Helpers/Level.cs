@@ -9,7 +9,7 @@ namespace towerdef.Helpers
         public class Level1
         {
             public static float EnemySpawnTimer = 2.5f;
-            public static int EnemiesToSpawn = 5;
+            public static int EnemiesToSpawn = 1;
             public static int Waves = 1;
             public static int Health = 150;
             public static int Gold = 500;
