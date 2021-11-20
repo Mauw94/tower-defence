@@ -15,6 +15,8 @@ namespace towerdef.Managers
 
         public bool PlayedOnce { get; private set; }
 
+        private bool _playing = true;
+
         public AnimationManager(Animation animation)
         {
             Animation = animation;
@@ -23,7 +25,7 @@ namespace towerdef.Managers
         public void Draw(SpriteBatch spriteBatch, Vector2 origin, float scale)
         {
             spriteBatch.Draw(
-                Animation.Textures[Animation.CurrentFrame], 
+                Animation.Textures[Animation.CurrentFrame],
                 Position,
                 null,
                 Color.White,
@@ -43,15 +45,24 @@ namespace towerdef.Managers
             _timer = 0f;
         }
 
+        public void Play()
+        {
+            _playing = true;
+        }
+
         public void Stop()
         {
             Animation.CurrentFrame = 0;
             _timer = 0f;
+            _playing = false;
         }
 
         public void Update(GameTime gameTime)
         {
-            _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            if (!_playing)
+                return;
+
+            _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (!(_timer > Animation.FrameSpeed)) return;
             _timer = 0f;

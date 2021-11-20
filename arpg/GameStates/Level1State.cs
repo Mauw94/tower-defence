@@ -41,7 +41,7 @@ namespace towerdef.GameStates
 
         private bool _levelStarted = false;
 
-        public Level1State(TowerDefence game, ContentManager content, SessionStorageProvider sessionStorageProvider) 
+        public Level1State(TowerDefence game, ContentManager content, SessionStorageProvider sessionStorageProvider)
             : base(game, content, sessionStorageProvider)
         {
         }
@@ -49,7 +49,7 @@ namespace towerdef.GameStates
         public override void LoadContent()
         {
             // load textures.
-            _gameMap = _content.Load<Texture2D>("level1");
+            _gameMap = _content.Load<Texture2D>("bg");
             _basicTowerTexture = _content.Load<Texture2D>("tower1");
             _fireTowerTexture = _content.Load<Texture2D>("firetower");
             _missileTexture = _content.Load<Texture2D>("missile");
@@ -148,6 +148,13 @@ namespace towerdef.GameStates
 
         public override void Update(GameTime gameTime)
         {
+            var mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                Console.WriteLine("X: " + mouseState.X);
+                Console.WriteLine("Y: " + mouseState.Y);
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 _levelStarted = true;
@@ -173,15 +180,14 @@ namespace towerdef.GameStates
 
                 foreach (var explosion in ExplosionManager.Explosions.ToArray())
                     explosion.Update(gameTime);
-                
+
                 _collisionDetection.DetectCollision();
                 _collisionDetection.EnemyReachesEndCheck();
                 _enemyManager.PeriodicallySpawnEnemy(gameTime);
 
-                Console.WriteLine(Level.Level1.Health);
                 if (Level.Level1.Health <= 0)
                     _levelStarted = false;
-            } 
+            }
             else
             {
                 _builderHud.Update(gameTime);
@@ -202,7 +208,7 @@ namespace towerdef.GameStates
 
             // TODO: move to separate class -> DrawHudClass?
             // draw gold.
-            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.Gold.ToString(), 
+            spriteBatch.DrawString(_font, "Gold : " + Level.Level1.Gold.ToString(),
                 new Vector2(15, 10), Color.Black);
 
             // draw wave counter.
@@ -231,13 +237,13 @@ namespace towerdef.GameStates
             {
                 foreach (var enemy in EnemyManager.Enemies.ToArray())
                     enemy.Draw(gameTime, spriteBatch);
-                
+
                 foreach (var missiles in MissileManager.Missiles.ToArray())
                     missiles.Draw(gameTime, spriteBatch);
 
                 foreach (var explosion in ExplosionManager.Explosions.ToArray())
                     explosion.Draw(gameTime, spriteBatch);
-            } 
+            }
             else
             {
                 // draw hud.
