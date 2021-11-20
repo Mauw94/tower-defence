@@ -13,13 +13,18 @@ namespace towerdef.Entities.Enemies
         public Pathfinding()
         {
             CoordinatesLevel1 = new List<CoordinatePoint>();
+
             CoordinatesLevel1.Add(
                 new CoordinatePoint
                 (new Vector2(-(TowerDefence.ScreenWidth - 200), -(TowerDefence.ScreenHeight / 2))));
 
             CoordinatesLevel1.Add(
                 new CoordinatePoint(
-                    new Vector2(-200, 500)));
+                    new Vector2(-200, -200)));
+
+            CoordinatesLevel1.Add(
+                new CoordinatePoint(
+                    new Vector2(-600, -600)));
         }
 
         public Vector2 GetNextPoint()
