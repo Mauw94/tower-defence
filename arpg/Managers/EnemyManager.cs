@@ -9,10 +9,8 @@ namespace towerdef.Managers
     public class EnemyManager : IGameManager
     {
         public static List<Enemy> Enemies;
-
         private float _timer = 0f;
-
-        private int _spawnedEnemies;
+        private int _spawnedEnemies = 0;
 
         public EnemyManager()
         {
@@ -21,7 +19,8 @@ namespace towerdef.Managers
 
         public static Golem1 GenerateGolem()
         {
-            var enemy = new Golem1(TextureHelper.Enemy2WalkingTextures);
+            var enemy = new Golem1(TextureHelper.Enemy2WalkingTextures, new Pathfinding());
+            
             Enemies.Add(enemy);
 
             return enemy;
@@ -31,7 +30,7 @@ namespace towerdef.Managers
         {
             _timer += (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (!(_timer > Level.Level1.EnemySpawnTimer) || _spawnedEnemies > Level.Level1.EnemiesToSpawn) return;
+            if (!(_timer > Level.Level1.EnemySpawnTimer) || _spawnedEnemies >= Level.Level1.EnemiesToSpawn) return;
             _timer = 0f;
             _spawnedEnemies++;
             GenerateGolem();
