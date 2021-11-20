@@ -190,7 +190,7 @@ namespace towerdef.GameStates
 
         public override void PostUpdate(GameTime gameTime)
         {
-            // todo: check for enemies to remove here.
+            // TODO: check for enemies to remove here.
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -200,7 +200,7 @@ namespace towerdef.GameStates
             // draw game map.
             spriteBatch.Draw(_gameMap, new Vector2(0, 0), Color.White);
 
-            // todo: move to separate class -> DrawHudClass?
+            // TODO: move to separate class -> DrawHudClass?
             // draw gold.
             spriteBatch.DrawString(_font, "Gold : " + Level.Level1.Gold.ToString(), 
                 new Vector2(15, 10), Color.Black);

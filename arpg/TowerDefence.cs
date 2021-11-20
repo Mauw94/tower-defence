@@ -16,7 +16,7 @@ namespace towerdef
         public static int ScreenWidth = 1280;
         public static int ScreenHeight = 720;
 
-        // todo: fix -> cant be accessible like this
+        // TODO: fix -> cant be accessible like this
         public static string GameKey;
 
         public GraphicsDeviceManager graphics;

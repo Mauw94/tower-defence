@@ -13,7 +13,7 @@ namespace towerdef.Levels
 
         }
 
-        // todo: optimize this.
+        // TODO: optimize this.
         public void DetectCollision()
         {
             foreach (var missile in MissileManager.Missiles.ToArray())

@@ -39,7 +39,7 @@ namespace towerdef.Levels
 
         public LevelBuilderHUD()
         {
-            // todo: textures not correct.
+            // TODO: textures not correct.
             _basicTowerSelectBox = new Rectangle(xPosHud, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
             _fireTowerSelectBox = new Rectangle(xPosHud + _basicTowerSelectBox.Width, yPosHud, TextureHelper.HudTexture.Width, TextureHelper.HudTexture.Height);
 

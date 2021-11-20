@@ -29,9 +29,9 @@ namespace towerdef.Entities.Enemies
 
         private Rectangle _healthRec;
 
-        // todo: create animation when dropping gold
-        // todo: make path finding algorithm for first 2 levelsQ
-        // todo: when level 2 => add another enemy to the spawn
+        // TODO: create animation when dropping gold
+        // TODO: make path finding algorithm for first 2 levelsQ
+        // TODO: when level 2 => add another enemy to the spawn
         public Enemy(Texture2D texture) : base(texture)
         {
         }

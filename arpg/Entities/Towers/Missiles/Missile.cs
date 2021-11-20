@@ -36,7 +36,7 @@ namespace towerdef.Entities.Towers.Missiles
                 return;
             }
 
-            // todo: refactor 
+            // TODO: refactor 
             if (_enemyToTarget != null)
             {
                 Vector2 direction = _enemyToTarget.Position - Position;
