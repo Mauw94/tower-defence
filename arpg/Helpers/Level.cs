@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using towerdef.Entities.Towers.Missiles;
 using towerdef.Sprites;
 
@@ -14,11 +15,10 @@ namespace towerdef.Helpers
             public static int Health = 150;
             public static int Gold = 500;
             public static bool GameOver = false;
+            public static bool LevelWon = false;
         }
         
-        public static bool WaveEnd { get; set; }
         public static int WaveKillCounter { get; set; }
-        public static int WaveCounter = 1;
 
         public static bool EnemyInShootingDistance(Sprite enemy, Missile missile)
         {
@@ -29,10 +29,10 @@ namespace towerdef.Helpers
         public static void IncreaseWaveKillCount()
         {
             WaveKillCounter++;
+            Console.WriteLine("killed enemy");
             if (WaveKillCounter >= Level1.EnemiesToSpawn)
             {
-                WaveEnd = true;
-                WaveCounter++;
+                Level1.LevelWon = true;
             }
         }
 
@@ -53,8 +53,6 @@ namespace towerdef.Helpers
 
         public static void Reset()
         {
-            WaveCounter = 1;
-            WaveEnd = false;
             WaveKillCounter = 0;
         }
     }
